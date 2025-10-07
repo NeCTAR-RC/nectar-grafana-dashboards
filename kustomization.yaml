@@ -1,0 +1,18 @@
+# Global options
+generatorOptions:
+  disableNameSuffixHash: true
+  labels:
+    grafana_dashboard: "1"
+commonAnnotations:
+  grafana_folder: "Openstack"
+#namespace: monitoring
+
+# Generate a ConfigMap for each dashboard
+configMapGenerator:
+
+#################################################
+# Tempest Dashboards
+#################################################
+
+- name: dashboards-tempest-overview
+  files: [ dashboards/tempest-overview.json ]
