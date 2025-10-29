@@ -16,3 +16,6 @@ configMapGenerator:
 
 - name: dashboards-tempest-overview
   files: [ dashboards/tempest-overview.json ]
+
+- name: dashboards-varroa-overview
+  files: [ dashboards/varroa.json ]
