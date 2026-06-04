@@ -19,3 +19,31 @@ configMapGenerator:
 
 - name: dashboards-varroa-overview
   files: [ dashboards/varroa.json ]
+
+#################################################
+# Service Units Dashboards
+#################################################
+
+- name: dashboards-service-units-global
+  files: [ dashboards/service_units_global.json ]
+  options:
+    annotations:
+      grafana_folder: "Service Unit"
+
+- name: dashboards-service-units-global2
+  files: [ dashboards/service_units_global2.json ]
+  options:
+    annotations:
+      grafana_folder: "Service Unit"
+
+- name: dashboards-service-units-project
+  files: [ dashboards/service_units_project.json ]
+  options:
+    annotations:
+      grafana_folder: "Service Unit"
+
+- name: dashboards-service-units-site
+  files: [ dashboards/service_units_site.json ]
+  options:
+    annotations:
+      grafana_folder: "Service Unit"
