@@ -3,8 +3,6 @@ generatorOptions:
   disableNameSuffixHash: true
   labels:
     grafana_dashboard: "1"
-commonAnnotations:
-  grafana_folder: "Openstack"
 #namespace: monitoring
 
 # Generate a ConfigMap for each dashboard
@@ -16,9 +14,15 @@ configMapGenerator:
 
 - name: dashboards-tempest-overview
   files: [ dashboards/tempest-overview.json ]
+  options:
+    annotations:
+      grafana_folder: "Openstack"
 
 - name: dashboards-varroa-overview
   files: [ dashboards/varroa.json ]
+  options:
+    annotations:
+      grafana_folder: "Openstack"
 
 #################################################
 # Infrastructure Dashboards
