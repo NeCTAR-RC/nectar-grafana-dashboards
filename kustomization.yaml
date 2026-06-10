@@ -11,7 +11,7 @@ commonAnnotations:
 configMapGenerator:
 
 #################################################
-# Tempest Dashboards
+# Openstack Dashboards
 #################################################
 
 - name: dashboards-tempest-overview
@@ -19,6 +19,16 @@ configMapGenerator:
 
 - name: dashboards-varroa-overview
   files: [ dashboards/varroa.json ]
+
+#################################################
+# Infrastructure Dashboards
+#################################################
+
+- name: dashboards-cert-manager-overview
+  files: [ dashboards/cert-manager-overview.json ]
+  options:
+    annotations:
+      grafana_folder: "Infrastructure"
 
 #################################################
 # Service Units Dashboards
