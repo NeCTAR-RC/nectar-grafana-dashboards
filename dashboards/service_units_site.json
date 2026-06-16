@@ -1,357 +1,349 @@
 {
-  "__primaryDatasource": "Cloudkitty",
-  "__allDatasources": [
-    "Cloudkitty"
-  ],
-  "__folderTitle": "ServiceUnit",
-  "__folderUid": "",
-  "dashboard": {
-    "annotations": {
-      "list": [
-        {
-          "datasource": {
-            "type": "datasource",
-            "uid": "grafana"
-          },
-          "enable": true,
-          "iconColor": "red",
-          "name": "Upgrades",
-          "target": {
-            "limit": 100,
-            "matchAny": false,
-            "tags": [
-              "upgrades"
-            ],
-            "type": "tags"
-          }
-        }
-      ]
-    },
-    "editable": true,
-    "fiscalYearStartMonth": 0,
-    "graphTooltip": 0,
-    "id": null,
-    "links": [],
-    "liveNow": false,
-    "panels": [
-      {
-        "collapsed": false,
-        "gridPos": {
-          "h": 1,
-          "w": 24,
-          "x": 0,
-          "y": 0
-        },
-        "id": 7,
-        "panels": [],
-        "repeat": "Availability_Zone",
-        "title": "$Availability_Zone Rate per Day",
-        "type": "row"
-      },
+  "annotations": {
+    "list": [
       {
         "datasource": {
-          "type": "influxdb",
-          "uid": "Cloudkitty"
+          "type": "datasource",
+          "uid": "grafana"
         },
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "custom": {
-              "axisLabel": "",
-              "axisPlacement": "auto",
-              "barAlignment": 0,
-              "drawStyle": "line",
-              "fillOpacity": 0,
-              "gradientMode": "none",
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              },
-              "lineInterpolation": "smooth",
-              "lineStyle": {
-                "fill": "solid"
-              },
-              "lineWidth": 1,
-              "pointSize": 5,
-              "scaleDistribution": {
-                "log": 2,
-                "type": "log"
-              },
-              "showPoints": "auto",
-              "spanNulls": false,
-              "stacking": {
-                "group": "A",
-                "mode": "none"
-              },
-              "thresholdsStyle": {
-                "mode": "off"
-              }
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            }
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 7,
-          "w": 24,
-          "x": 0,
-          "y": 1
-        },
-        "id": 2,
-        "options": {
-          "legend": {
-            "calcs": [
-              "lastNotNull",
-              "mean"
-            ],
-            "displayMode": "list",
-            "placement": "bottom"
-          },
-          "tooltip": {
-            "mode": "single",
-            "sort": "none"
-          }
-        },
-        "targets": [
-          {
-            "datasource": {
-              "type": "influxdb",
-              "uid": "Cloudkitty"
-            },
-            "groupBy": [
-              {
-                "params": [
-                  "1d"
-                ],
-                "type": "time"
-              },
-              {
-                "params": [
-                  "null"
-                ],
-                "type": "fill"
-              }
-            ],
-            "measurement": "dataframes",
-            "orderByTime": "ASC",
-            "policy": "autogen",
-            "query": "SELECT sum(\"price\") AS \"SU\", sum(\"qty\") AS \"Instance Hour\" FROM \"autogen\".\"dataframes\" WHERE $timeFilter and \"availability_zone\" = '$Availability_Zone' GROUP BY time(1h) fill(null)",
-            "rawQuery": true,
-            "refId": "A",
-            "resultFormat": "time_series",
-            "select": [
-              [
-                {
-                  "params": [
-                    "price"
-                  ],
-                  "type": "field"
-                },
-                {
-                  "params": [],
-                  "type": "sum"
-                },
-                {
-                  "params": [
-                    "SU"
-                  ],
-                  "type": "alias"
-                }
-              ],
-              [
-                {
-                  "params": [
-                    "qty"
-                  ],
-                  "type": "field"
-                },
-                {
-                  "params": [],
-                  "type": "sum"
-                },
-                {
-                  "params": [
-                    "Instance Hour"
-                  ],
-                  "type": "alias"
-                }
-              ]
-            ],
-            "tags": []
-          }
-        ],
-        "title": "SU Per Day For $Availability_Zone",
-        "transformations": [
-          {
-            "id": "renameByRegex",
-            "options": {
-              "regex": "dataframes.(.*)",
-              "renamePattern": "$1"
-            }
-          }
-        ],
-        "type": "timeseries"
+        "enable": true,
+        "iconColor": "red",
+        "name": "Upgrades",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [
+            "upgrades"
+          ],
+          "type": "tags"
+        }
       }
-    ],
-    "refresh": false,
-    "schemaVersion": 36,
-    "style": "dark",
-    "tags": [
-      "coreservices"
-    ],
-    "templating": {
-      "list": [
-        {
-          "current": {
-            "selected": true,
-            "text": [
-              "QRIScloud",
-              "adelaide",
-              "ardc-syd-1",
-              "auckland",
-              "intersect",
-              "intersect-adelaide",
-              "melbourne-qh2",
-              "melbourne-qh2-uom",
-              "monash-01",
-              "monash-02",
-              "pawsey",
-              "swinburne-01",
-              "tasmania",
-              "tasmania-02",
-              "tasmania-s"
-            ],
-            "value": [
-              "QRIScloud",
-              "adelaide",
-              "ardc-syd-1",
-              "auckland",
-              "intersect",
-              "intersect-adelaide",
-              "melbourne-qh2",
-              "melbourne-qh2-uom",
-              "monash-01",
-              "monash-02",
-              "pawsey",
-              "swinburne-01",
-              "tasmania",
-              "tasmania-02",
-              "tasmania-s"
-            ]
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": null,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 7,
+      "panels": [],
+      "repeat": "Availability_Zone",
+      "title": "$Availability_Zone Rate per Day",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "Cloudkitty"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
           },
-          "hide": 0,
-          "includeAll": false,
-          "multi": true,
-          "name": "Availability_Zone",
-          "options": [
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "log": 2,
+              "type": "log"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 24,
+        "x": 0,
+        "y": 1
+      },
+      "id": 2,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull",
+            "mean"
+          ],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "Cloudkitty"
+          },
+          "groupBy": [
             {
-              "selected": true,
-              "text": "QRIScloud",
-              "value": "QRIScloud"
+              "params": [
+                "1d"
+              ],
+              "type": "time"
             },
             {
-              "selected": true,
-              "text": "adelaide",
-              "value": "adelaide"
-            },
-            {
-              "selected": true,
-              "text": "ardc-syd-1",
-              "value": "ardc-syd-1"
-            },
-            {
-              "selected": true,
-              "text": "auckland",
-              "value": "auckland"
-            },
-            {
-              "selected": true,
-              "text": "intersect",
-              "value": "intersect"
-            },
-            {
-              "selected": true,
-              "text": "intersect-adelaide",
-              "value": "intersect-adelaide"
-            },
-            {
-              "selected": true,
-              "text": "melbourne-qh2",
-              "value": "melbourne-qh2"
-            },
-            {
-              "selected": true,
-              "text": "melbourne-qh2-uom",
-              "value": "melbourne-qh2-uom"
-            },
-            {
-              "selected": true,
-              "text": "monash-01",
-              "value": "monash-01"
-            },
-            {
-              "selected": true,
-              "text": "monash-02",
-              "value": "monash-02"
-            },
-            {
-              "selected": true,
-              "text": "pawsey",
-              "value": "pawsey"
-            },
-            {
-              "selected": true,
-              "text": "swinburne-01",
-              "value": "swinburne-01"
-            },
-            {
-              "selected": true,
-              "text": "tasmania",
-              "value": "tasmania"
-            },
-            {
-              "selected": true,
-              "text": "tasmania-02",
-              "value": "tasmania-02"
-            },
-            {
-              "selected": true,
-              "text": "tasmania-s",
-              "value": "tasmania-s"
+              "params": [
+                "null"
+              ],
+              "type": "fill"
             }
           ],
-          "query": "QRIScloud,\nadelaide,\nardc-syd-1,\nauckland,\nintersect,\nintersect-adelaide,\nmelbourne-qh2,\nmelbourne-qh2-uom,\nmonash-01,\nmonash-02,\npawsey,\nswinburne-01,\ntasmania,\ntasmania-02,\ntasmania-s,",
-          "queryValue": "",
-          "skipUrlSync": false,
-          "type": "custom"
+          "measurement": "dataframes",
+          "orderByTime": "ASC",
+          "policy": "autogen",
+          "query": "SELECT sum(\"price\") AS \"SU\", sum(\"qty\") AS \"Instance Hour\" FROM \"autogen\".\"dataframes\" WHERE $timeFilter and \"availability_zone\" = '$Availability_Zone' GROUP BY time(1h) fill(null)",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "price"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "sum"
+              },
+              {
+                "params": [
+                  "SU"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "qty"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "sum"
+              },
+              {
+                "params": [
+                  "Instance Hour"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "tags": []
         }
-      ]
-    },
-    "time": {
-      "from": "now-2d",
-      "to": "now"
-    },
-    "timepicker": {},
-    "timezone": "",
-    "title": "Site Service Units",
-    "uid": null,
-    "version": 1,
-    "weekStart": ""
-  }
+      ],
+      "title": "SU Per Day For $Availability_Zone",
+      "transformations": [
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "dataframes.(.*)",
+            "renamePattern": "$1"
+          }
+        }
+      ],
+      "type": "timeseries"
+    }
+  ],
+  "refresh": false,
+  "schemaVersion": 36,
+  "style": "dark",
+  "tags": [
+    "coreservices"
+  ],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": true,
+          "text": [
+            "QRIScloud",
+            "adelaide",
+            "ardc-syd-1",
+            "auckland",
+            "intersect",
+            "intersect-adelaide",
+            "melbourne-qh2",
+            "melbourne-qh2-uom",
+            "monash-01",
+            "monash-02",
+            "pawsey",
+            "swinburne-01",
+            "tasmania",
+            "tasmania-02",
+            "tasmania-s"
+          ],
+          "value": [
+            "QRIScloud",
+            "adelaide",
+            "ardc-syd-1",
+            "auckland",
+            "intersect",
+            "intersect-adelaide",
+            "melbourne-qh2",
+            "melbourne-qh2-uom",
+            "monash-01",
+            "monash-02",
+            "pawsey",
+            "swinburne-01",
+            "tasmania",
+            "tasmania-02",
+            "tasmania-s"
+          ]
+        },
+        "hide": 0,
+        "includeAll": false,
+        "multi": true,
+        "name": "Availability_Zone",
+        "options": [
+          {
+            "selected": true,
+            "text": "QRIScloud",
+            "value": "QRIScloud"
+          },
+          {
+            "selected": true,
+            "text": "adelaide",
+            "value": "adelaide"
+          },
+          {
+            "selected": true,
+            "text": "ardc-syd-1",
+            "value": "ardc-syd-1"
+          },
+          {
+            "selected": true,
+            "text": "auckland",
+            "value": "auckland"
+          },
+          {
+            "selected": true,
+            "text": "intersect",
+            "value": "intersect"
+          },
+          {
+            "selected": true,
+            "text": "intersect-adelaide",
+            "value": "intersect-adelaide"
+          },
+          {
+            "selected": true,
+            "text": "melbourne-qh2",
+            "value": "melbourne-qh2"
+          },
+          {
+            "selected": true,
+            "text": "melbourne-qh2-uom",
+            "value": "melbourne-qh2-uom"
+          },
+          {
+            "selected": true,
+            "text": "monash-01",
+            "value": "monash-01"
+          },
+          {
+            "selected": true,
+            "text": "monash-02",
+            "value": "monash-02"
+          },
+          {
+            "selected": true,
+            "text": "pawsey",
+            "value": "pawsey"
+          },
+          {
+            "selected": true,
+            "text": "swinburne-01",
+            "value": "swinburne-01"
+          },
+          {
+            "selected": true,
+            "text": "tasmania",
+            "value": "tasmania"
+          },
+          {
+            "selected": true,
+            "text": "tasmania-02",
+            "value": "tasmania-02"
+          },
+          {
+            "selected": true,
+            "text": "tasmania-s",
+            "value": "tasmania-s"
+          }
+        ],
+        "query": "QRIScloud,\nadelaide,\nardc-syd-1,\nauckland,\nintersect,\nintersect-adelaide,\nmelbourne-qh2,\nmelbourne-qh2-uom,\nmonash-01,\nmonash-02,\npawsey,\nswinburne-01,\ntasmania,\ntasmania-02,\ntasmania-s,",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-2d",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Site Service Units",
+  "uid": null,
+  "version": 1,
+  "weekStart": ""
 }
