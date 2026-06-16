@@ -13,7 +13,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Cloudkitty",
+      "datasource": { "type": "influxdb", "uid": "Cloudkitty" },
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -177,7 +177,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Gnocchi",
+      "datasource": { "type": "gnocchixyz-gnocchi-datasource", "uid": "Gnocchi" },
       "fieldConfig": {
         "defaults": {
           "custom": {},

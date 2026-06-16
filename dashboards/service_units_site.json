@@ -144,7 +144,7 @@
           "measurement": "dataframes",
           "orderByTime": "ASC",
           "policy": "autogen",
-          "query": "SELECT sum(\"price\") AS \"SU\", sum(\"qty\") AS \"Instance Hour\" FROM \"autogen\".\"dataframes\" WHERE $timeFilter and \"availability_zone\" = '$Availability_Zone' GROUP BY time(1h) fill(null)",
+          "query": "SELECT sum(\"price\") AS \"SU\", sum(\"qty\") AS \"Instance Hour\" FROM \"autogen\".\"dataframes\" WHERE $timeFilter and \"availability_zone\" =~ /^($Availability_Zone)$/ GROUP BY time(1h) fill(null)",
           "rawQuery": true,
           "refId": "A",
           "resultFormat": "time_series",
@@ -211,128 +211,23 @@
   "templating": {
     "list": [
       {
-        "current": {
-          "selected": true,
-          "text": [
-            "QRIScloud",
-            "adelaide",
-            "ardc-syd-1",
-            "auckland",
-            "intersect",
-            "intersect-adelaide",
-            "melbourne-qh2",
-            "melbourne-qh2-uom",
-            "monash-01",
-            "monash-02",
-            "pawsey",
-            "swinburne-01",
-            "tasmania",
-            "tasmania-02",
-            "tasmania-s"
-          ],
-          "value": [
-            "QRIScloud",
-            "adelaide",
-            "ardc-syd-1",
-            "auckland",
-            "intersect",
-            "intersect-adelaide",
-            "melbourne-qh2",
-            "melbourne-qh2-uom",
-            "monash-01",
-            "monash-02",
-            "pawsey",
-            "swinburne-01",
-            "tasmania",
-            "tasmania-02",
-            "tasmania-s"
-          ]
+        "current": {},
+        "datasource": {
+          "type": "influxdb",
+          "uid": "Cloudkitty"
         },
+        "definition": "SELECT DISTINCT(\"availability_zone\") FROM \"autogen\".\"dataframes\" WHERE time > now() - 30d",
         "hide": 0,
-        "includeAll": false,
+        "includeAll": true,
         "multi": true,
         "name": "Availability_Zone",
-        "options": [
-          {
-            "selected": true,
-            "text": "QRIScloud",
-            "value": "QRIScloud"
-          },
-          {
-            "selected": true,
-            "text": "adelaide",
-            "value": "adelaide"
-          },
-          {
-            "selected": true,
-            "text": "ardc-syd-1",
-            "value": "ardc-syd-1"
-          },
-          {
-            "selected": true,
-            "text": "auckland",
-            "value": "auckland"
-          },
-          {
-            "selected": true,
-            "text": "intersect",
-            "value": "intersect"
-          },
-          {
-            "selected": true,
-            "text": "intersect-adelaide",
-            "value": "intersect-adelaide"
-          },
-          {
-            "selected": true,
-            "text": "melbourne-qh2",
-            "value": "melbourne-qh2"
-          },
-          {
-            "selected": true,
-            "text": "melbourne-qh2-uom",
-            "value": "melbourne-qh2-uom"
-          },
-          {
-            "selected": true,
-            "text": "monash-01",
-            "value": "monash-01"
-          },
-          {
-            "selected": true,
-            "text": "monash-02",
-            "value": "monash-02"
-          },
-          {
-            "selected": true,
-            "text": "pawsey",
-            "value": "pawsey"
-          },
-          {
-            "selected": true,
-            "text": "swinburne-01",
-            "value": "swinburne-01"
-          },
-          {
-            "selected": true,
-            "text": "tasmania",
-            "value": "tasmania"
-          },
-          {
-            "selected": true,
-            "text": "tasmania-02",
-            "value": "tasmania-02"
-          },
-          {
-            "selected": true,
-            "text": "tasmania-s",
-            "value": "tasmania-s"
-          }
-        ],
-        "query": "QRIScloud,\nadelaide,\nardc-syd-1,\nauckland,\nintersect,\nintersect-adelaide,\nmelbourne-qh2,\nmelbourne-qh2-uom,\nmonash-01,\nmonash-02,\npawsey,\nswinburne-01,\ntasmania,\ntasmania-02,\ntasmania-s,",
-        "queryValue": "",
+        "options": [],
+        "query": "SELECT DISTINCT(\"availability_zone\") FROM \"autogen\".\"dataframes\" WHERE time > now() - 30d",
+        "refresh": 1,
+        "regex": "",
         "skipUrlSync": false,
-        "type": "custom"
+        "sort": 1,
+        "type": "query"
       }
     ]
   },

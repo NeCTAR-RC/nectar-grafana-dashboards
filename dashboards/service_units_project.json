@@ -13,7 +13,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Cloudkitty",
+      "datasource": { "type": "influxdb", "uid": "Cloudkitty" },
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -148,7 +148,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Cloudkitty",
+      "datasource": { "type": "influxdb", "uid": "Cloudkitty" },
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -297,7 +297,7 @@
           "text": "2f6f7e75fc0f453d9c127b490b02e9e3",
           "value": "2f6f7e75fc0f453d9c127b490b02e9e3"
         },
-        "datasource": "Cloudkitty",
+        "datasource": { "type": "influxdb", "uid": "Cloudkitty" },
         "definition": "",
         "hide": 0,
         "includeAll": false,
