@@ -1,0 +1,512 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": null,
+  "iteration": 1774399922508,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 10,
+      "panels": [],
+      "title": "All sites overview",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "color": "red",
+                  "index": 1,
+                  "text": "Fail"
+                },
+                "1": {
+                  "color": "green",
+                  "index": 0,
+                  "text": "Pass"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "max": -1,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 30
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".*last run"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "min ago"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 1
+      },
+      "id": 2,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "value_and_name"
+      },
+      "pluginVersion": "8.5.9",
+      "repeat": "test",
+      "repeatDirection": "v",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "tempest_test_success{test=\"$test\",flavor=''}",
+          "instant": true,
+          "legendFormat": "{{site}}",
+          "range": false,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "(time() - tempest_test_last_run_timestamp{test=\"$test\",flavor=''}) / 60",
+          "format": "time_series",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "{{site}} last run",
+          "range": false,
+          "refId": "B"
+        }
+      ],
+      "title": "Latest tempest $test test",
+      "transformations": [],
+      "type": "stat"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 10
+      },
+      "id": 6,
+      "panels": [],
+      "title": "All tests per site",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-GrYlRd"
+          },
+          "custom": {
+            "fillOpacity": 70,
+            "lineWidth": 0,
+            "spanNulls": false
+          },
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "color": "red",
+                  "index": 1
+                },
+                "1": {
+                  "color": "green",
+                  "index": 0
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 11
+      },
+      "id": 4,
+      "interval": "30s",
+      "maxDataPoints": 100,
+      "options": {
+        "alignValue": "left",
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "mergeValues": true,
+        "rowHeight": 0.9,
+        "showValue": "never",
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "8.5.9",
+      "repeat": "az",
+      "repeatDirection": "v",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "expr": "tempest_test_success{site='$az'}",
+          "legendFormat": "{{site}}-{{test}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Tempest test for $az",
+      "type": "state-timeline"
+    }
+  ],
+  "refresh": "30s",
+  "schemaVersion": 36,
+  "style": "dark",
+  "tags": [
+    "tempest"
+  ],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "Prometheus",
+          "value": "prometheus"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": "datasource",
+        "multi": false,
+        "name": "DS_PROMETHEUS",
+        "options": [],
+        "query": "prometheus",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "type": "datasource"
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": [
+            "adelaide",
+            "ardc-syd-1",
+            "auckland",
+            "intersect-01",
+            "intersect-adelaide",
+            "melbourne-qh2-uom",
+            "melbourne-qh2",
+            "monash-01",
+            "monash-02",
+            "pawsey",
+            "qld",
+            "swinburne-01",
+            "tasmania-02",
+            "tasmania"
+          ],
+          "value": [
+            "adelaide",
+            "ardc-syd-1",
+            "auckland",
+            "intersect-01",
+            "intersect-adelaide",
+            "melbourne-qh2-uom",
+            "melbourne-qh2",
+            "monash-01",
+            "monash-02",
+            "pawsey",
+            "qld",
+            "swinburne-01",
+            "tasmania-02",
+            "tasmania"
+          ]
+        },
+        "hide": 0,
+        "includeAll": false,
+        "multi": true,
+        "name": "az",
+        "options": [
+          {
+            "selected": true,
+            "text": "adelaide",
+            "value": "adelaide"
+          },
+          {
+            "selected": false,
+            "text": "ardc-syd-1",
+            "value": "ardc-syd-1"
+          },
+          {
+            "selected": false,
+            "text": "auckland",
+            "value": "auckland"
+          },
+          {
+            "selected": false,
+            "text": "intersect-01",
+            "value": "intersect-01"
+          },
+          {
+            "selected": false,
+            "text": "intersect-adelaide",
+            "value": "intersect-adelaide"
+          },
+          {
+            "selected": false,
+            "text": "melbourne-qh2-uom",
+            "value": "melbourne-qh2-uom"
+          },
+          {
+            "selected": false,
+            "text": "melbourne-qh2",
+            "value": "melbourne-qh2"
+          },
+          {
+            "selected": false,
+            "text": "monash-01",
+            "value": "monash-01"
+          },
+          {
+            "selected": false,
+            "text": "monash-02",
+            "value": "monash-02"
+          },
+          {
+            "selected": false,
+            "text": "pawsey",
+            "value": "pawsey"
+          },
+          {
+            "selected": false,
+            "text": "qld",
+            "value": "qld"
+          },
+          {
+            "selected": false,
+            "text": "swinburne-01",
+            "value": "swinburne-01"
+          },
+          {
+            "selected": false,
+            "text": "tasmania-02",
+            "value": "tasmania-02"
+          },
+          {
+            "selected": false,
+            "text": "tasmania",
+            "value": "tasmania"
+          }
+        ],
+        "query": "adelaide,ardc-syd-1,auckland,\nintersect-01,\nintersect-adelaide,\nmelbourne-qh2-uom,\nmelbourne-qh2,\nmonash-01,\nmonash-02,\npawsey,\nqld,\nswinburne-01,\ntasmania-02,tasmania",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": [
+            "compute",
+            "volume",
+            "network"
+          ],
+          "value": [
+            "compute",
+            "volume",
+            "network"
+          ]
+        },
+        "hide": 0,
+        "includeAll": false,
+        "multi": true,
+        "name": "test",
+        "options": [
+          {
+            "selected": true,
+            "text": "compute",
+            "value": "compute"
+          },
+          {
+            "selected": false,
+            "text": "application",
+            "value": "application"
+          },
+          {
+            "selected": false,
+            "text": "coe",
+            "value": "coe"
+          },
+          {
+            "selected": false,
+            "text": "database",
+            "value": "database"
+          },
+          {
+            "selected": false,
+            "text": "loadbalancer",
+            "value": "loadbalancer"
+          },
+          {
+            "selected": false,
+            "text": "network",
+            "value": "network"
+          },
+          {
+            "selected": false,
+            "text": "orchestration",
+            "value": "orchestration"
+          },
+          {
+            "selected": false,
+            "text": "volume",
+            "value": "volume"
+          },
+          {
+            "selected": false,
+            "text": "volume_backup",
+            "value": "volume_backup"
+          },
+          {
+            "selected": false,
+            "text": "share_nfs",
+            "value": "share_nfs"
+          },
+          {
+            "selected": false,
+            "text": "share_cephfs",
+            "value": "share_cephfs"
+          },
+          {
+            "selected": false,
+            "text": "dns",
+            "value": "dns"
+          },
+          {
+            "selected": false,
+            "text": "image",
+            "value": "image"
+          },
+          {
+            "selected": false,
+            "text": "object",
+            "value": "object"
+          }
+        ],
+        "query": "compute,\napplication,\ncoe,\ndatabase,\nloadbalancer,\nnetwork,\norchestration,\nvolume,\nvolume_backup,\nshare_nfs,\nshare_cephfs,\ndns,\nimage,\nobject,",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-30d",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Tempest Current",
+  "uid": "Mv8ZhgjNk",
+  "version": 16,
+  "weekStart": ""
+}

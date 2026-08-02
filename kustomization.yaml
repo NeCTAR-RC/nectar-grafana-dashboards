@@ -24,6 +24,66 @@ configMapGenerator:
     annotations:
       grafana_folder: "Openstack"
 
+- name: dashboards-500-errors
+  files: [ dashboards/500_errors.json ]
+  options:
+    annotations:
+      grafana_folder: "Openstack"
+
+- name: dashboards-api-response
+  files: [ dashboards/api_response.json ]
+  options:
+    annotations:
+      grafana_folder: "Openstack"
+
+- name: dashboards-connection-resets
+  files: [ dashboards/connection_resets.json ]
+  options:
+    annotations:
+      grafana_folder: "Openstack"
+
+- name: dashboards-keystone
+  files: [ dashboards/keystone.json ]
+  options:
+    annotations:
+      grafana_folder: "Openstack"
+
+- name: dashboards-keystone-response
+  files: [ dashboards/keystone_response.json ]
+  options:
+    annotations:
+      grafana_folder: "Openstack"
+
+- name: dashboards-tempest-current
+  files: [ dashboards/tempest_current.json ]
+  options:
+    annotations:
+      grafana_folder: "Openstack"
+
+- name: dashboards-cinder-storage-performance-all-sites
+  files: [ dashboards/cinder_storage_performance_all_sites.json ]
+  options:
+    annotations:
+      grafana_folder: "Openstack"
+
+- name: dashboards-cinder-storage-performance-per-site
+  files: [ dashboards/cinder_storage_performance_per_site.json ]
+  options:
+    annotations:
+      grafana_folder: "Openstack"
+
+- name: dashboards-volume-performance-all-sites-mma
+  files: [ dashboards/volume_performance_all_sites_mma.json ]
+  options:
+    annotations:
+      grafana_folder: "Openstack"
+
+- name: dashboards-allocation-approver
+  files: [ dashboards/allocation_approver_dashboards.json ]
+  options:
+    annotations:
+      grafana_folder: "Openstack"
+
 #################################################
 # Infrastructure Dashboards
 #################################################
@@ -33,6 +93,154 @@ configMapGenerator:
   options:
     annotations:
       grafana_folder: "Infrastructure"
+
+- name: dashboards-envoy-gateway-api
+  files: [ dashboards/envoy_gateway_api.json ]
+  options:
+    annotations:
+      grafana_folder: "Infrastructure"
+
+- name: dashboards-elasticsearch-errors
+  files: [ dashboards/elasticsearch_errors.json ]
+  options:
+    annotations:
+      grafana_folder: "Infrastructure"
+
+- name: dashboards-node-exporter
+  files: [ dashboards/node_exporter.json ]
+  options:
+    annotations:
+      grafana_folder: "Infrastructure"
+
+- name: dashboards-node-exporter-fio
+  files: [ dashboards/node_exporter_fio.json ]
+  options:
+    annotations:
+      grafana_folder: "Infrastructure"
+
+- name: dashboards-rabbitmq
+  files: [ dashboards/rabbitmq.json ]
+  options:
+    annotations:
+      grafana_folder: "Infrastructure"
+
+- name: dashboards-rabbitmq-overview
+  files: [ dashboards/rabbitmq_overview.json ]
+  options:
+    annotations:
+      grafana_folder: "Infrastructure"
+
+- name: dashboards-sdn-node-network-overview
+  files: [ dashboards/sdn_node_network_overview.json ]
+  options:
+    annotations:
+      grafana_folder: "Infrastructure"
+
+- name: dashboards-etcd-cluster
+  files: [ dashboards/etcd_cluster.json ]
+  options:
+    annotations:
+      grafana_folder: "Infrastructure"
+
+- name: dashboards-argocd
+  files: [ dashboards/argocd.json ]
+  options:
+    annotations:
+      grafana_folder: "Infrastructure"
+
+- name: dashboards-mysql-overview
+  files: [ dashboards/mysql_overview.json ]
+  options:
+    annotations:
+      grafana_folder: "Infrastructure"
+
+- name: dashboards-influxdb-internals
+  files: [ dashboards/influxdb_internals.json ]
+  options:
+    annotations:
+      grafana_folder: "Infrastructure"
+
+- name: dashboards-prometheus-stats
+  files: [ dashboards/prometheus_stats.json ]
+  options:
+    annotations:
+      grafana_folder: "Infrastructure"
+
+- name: dashboards-monitoring-tunnel-performance
+  files: [ dashboards/monitoring_tunnel_performance.json ]
+  options:
+    annotations:
+      grafana_folder: "Infrastructure"
+
+- name: dashboards-monitoring-tunnel-performance-big-picture
+  files: [ dashboards/monitoring_tunnel_performance_big_picture.json ]
+  options:
+    annotations:
+      grafana_folder: "Infrastructure"
+
+- name: dashboards-monitoring-tunnel-performance-big-picture-intersite
+  files: [ dashboards/monitoring_tunnel_performance_big_picture_intersite.json ]
+  options:
+    annotations:
+      grafana_folder: "Infrastructure"
+
+- name: dashboards-homepage
+  files: [ dashboards/homepage.json ]
+  options:
+    annotations:
+      grafana_folder: "Infrastructure"
+
+- name: dashboards-cron-jobs
+  files: [ dashboards/cron_jobs.json ]
+  options:
+    annotations:
+      grafana_folder: "Infrastructure"
+
+- name: dashboards-docker-container-metrics
+  files: [ dashboards/docker_container_metrics.json ]
+  options:
+    annotations:
+      grafana_folder: "Infrastructure"
+
+- name: dashboards-infra-network-traffic
+  files: [ dashboards/infra_network_traffic.json ]
+  options:
+    annotations:
+      grafana_folder: "Infrastructure"
+
+- name: dashboards-kubernetes-event-monitoring
+  files: [ dashboards/kubernetes_event_monitoring.json ]
+  options:
+    annotations:
+      grafana_folder: "Infrastructure"
+
+#################################################
+# Services Dashboards
+#################################################
+
+- name: dashboards-binderhub
+  files: [ dashboards/binderhub_dashboard.json ]
+  options:
+    annotations:
+      grafana_folder: "Services"
+
+- name: dashboards-jupyter-binder-users
+  files: [ dashboards/jupyter_binder_users.json ]
+  options:
+    annotations:
+      grafana_folder: "Services"
+
+- name: dashboards-jupyter-binderhub
+  files: [ dashboards/jupyter_binderhub_dashboard.json ]
+  options:
+    annotations:
+      grafana_folder: "Services"
+
+- name: dashboards-bumblebee-desktops
+  files: [ dashboards/bumblebee_desktops.json ]
+  options:
+    annotations:
+      grafana_folder: "Services"
 
 #################################################
 # Service Units Dashboards
@@ -58,6 +266,12 @@ configMapGenerator:
 
 - name: dashboards-service-units-site
   files: [ dashboards/service_units_site.json ]
+  options:
+    annotations:
+      grafana_folder: "Service Unit"
+
+- name: dashboards-az-service-units
+  files: [ dashboards/az_service_units.json ]
   options:
     annotations:
       grafana_folder: "Service Unit"

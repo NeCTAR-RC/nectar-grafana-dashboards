@@ -1,0 +1,490 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": null,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 14,
+        "x": 0,
+        "y": 0
+      },
+      "id": 9,
+      "options": {
+        "content": "\n\n<table style=\"border: 0\">\n  <tr style=\"border: 0\">\n    <td style=\"border: 0\">\n      <img src=\"https://dashboard.rc.nectar.org.au/static/themes/nectar/img/logo-splash.svg\" alt=\"Grot\"/>\n    </td>\n    <td style=\"border: 0\">\n<p style=\"font-weight: bold; font-size: 1.1em\">Welcome to Nectar Cloud Grafana</p>\n</td>\n</tr>\n</table>\n\n",
+        "mode": "markdown"
+      },
+      "pluginVersion": "8.5.9",
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 4,
+        "x": 14,
+        "y": 0
+      },
+      "id": 16,
+      "options": {
+        "content": "### Kibana dashboards\n\nFor API Loadbalancer stats:\n  - [API Envoy Gateway](https://kibana.rc.nectar.org.au/app/r/s/jE7Qn)\n  - [API Envoy Gateway 5XX](https://kibana.rc.nectar.org.au/app/r/s/Kj6db)\n\nSwift troubleshooting:\n  - [Upload/download](https://kibana.rc.nectar.org.au/app/r/s/W7YZj)\n\nLog searching\uff1a\n  - [Discover](https://kibana.rc.nectar.org.au/app/r/s/MQ4pl)\n\n### Nagios\n  - [Nectar nagios4](https://mon.rc.nectar.org.au/nagios4/)\n\n### Jenkins\n  - [Compute Tempest](https://jenkins.rc.nectar.org.au/)",
+        "mode": "markdown"
+      },
+      "pluginVersion": "8.5.9",
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "color": "red",
+                  "index": 1
+                },
+                "1": {
+                  "color": "green",
+                  "index": 0
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 31,
+        "w": 6,
+        "x": 18,
+        "y": 0
+      },
+      "id": 20,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {
+          "valueSize": 12
+        },
+        "textMode": "name"
+      },
+      "pluginVersion": "8.5.9",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "expr": "tempest_test_success{flavor=\"\", test=\"network\"}",
+          "legendFormat": "{{site}}-network",
+          "range": true,
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "expr": "tempest_test_success{flavor=\"\", test=\"compute\"}",
+          "hide": false,
+          "legendFormat": "{{site}}-compute",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "expr": "tempest_test_success{flavor=\"\", test=\"volume\"}",
+          "hide": false,
+          "legendFormat": "{{site}}-volume",
+          "range": true,
+          "refId": "C"
+        }
+      ],
+      "title": "Tempest Compute/Volume/Network",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 27,
+        "w": 3,
+        "x": 0,
+        "y": 4
+      },
+      "id": 2,
+      "options": {
+        "maxItems": 100,
+        "query": "",
+        "showHeadings": false,
+        "showRecentlyViewed": false,
+        "showSearch": true,
+        "showStarred": false,
+        "tags": [
+          "coreservices"
+        ]
+      },
+      "pluginVersion": "8.5.9",
+      "title": "Coreservice Infra Monitoring",
+      "type": "dashlist"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 27,
+        "w": 3,
+        "x": 3,
+        "y": 4
+      },
+      "id": 13,
+      "options": {
+        "maxItems": 100,
+        "query": "",
+        "showHeadings": false,
+        "showRecentlyViewed": false,
+        "showSearch": true,
+        "showStarred": false,
+        "tags": [
+          "allocations"
+        ]
+      },
+      "pluginVersion": "8.5.9",
+      "title": "Allocations",
+      "type": "dashlist"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 4,
+        "x": 6,
+        "y": 4
+      },
+      "id": 12,
+      "options": {
+        "maxItems": 100,
+        "query": "",
+        "showHeadings": false,
+        "showRecentlyViewed": false,
+        "showSearch": true,
+        "showStarred": false,
+        "tags": [
+          "tempest"
+        ]
+      },
+      "pluginVersion": "8.5.9",
+      "title": "Tempest Results",
+      "type": "dashlist"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 4,
+        "x": 10,
+        "y": 4
+      },
+      "id": 19,
+      "options": {
+        "maxItems": 100,
+        "query": "",
+        "showHeadings": false,
+        "showRecentlyViewed": false,
+        "showSearch": true,
+        "showStarred": false,
+        "tags": [
+          "instances"
+        ]
+      },
+      "pluginVersion": "8.5.9",
+      "title": "Instances Stats",
+      "type": "dashlist"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 4,
+        "x": 6,
+        "y": 11
+      },
+      "id": 23,
+      "options": {
+        "maxItems": 10,
+        "query": "",
+        "showHeadings": false,
+        "showRecentlyViewed": false,
+        "showSearch": true,
+        "showStarred": false,
+        "tags": [
+          "monitoring instances"
+        ]
+      },
+      "pluginVersion": "8.5.9",
+      "title": "Monitoring instances",
+      "type": "dashlist"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 4,
+        "x": 10,
+        "y": 11
+      },
+      "id": 14,
+      "options": {
+        "maxItems": 100,
+        "query": "",
+        "showHeadings": false,
+        "showRecentlyViewed": false,
+        "showSearch": true,
+        "showStarred": false,
+        "tags": [
+          "reservations"
+        ]
+      },
+      "pluginVersion": "8.5.9",
+      "title": "Reservations",
+      "type": "dashlist"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 4,
+        "x": 14,
+        "y": 11
+      },
+      "id": 11,
+      "options": {
+        "limit": 5,
+        "navigateAfter": "10m",
+        "navigateBefore": "10m",
+        "navigateToPanel": true,
+        "onlyFromThisDashboard": false,
+        "onlyInTimeRange": false,
+        "showTags": false,
+        "showTime": true,
+        "showUser": false
+      },
+      "title": "Recent Upgrades",
+      "type": "annolist"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 4,
+        "x": 6,
+        "y": 22
+      },
+      "id": 4,
+      "options": {
+        "maxItems": 5,
+        "query": "",
+        "showHeadings": false,
+        "showRecentlyViewed": true,
+        "showSearch": false,
+        "showStarred": false,
+        "tags": []
+      },
+      "pluginVersion": "8.5.9",
+      "title": "Recent Viewed Dashboards",
+      "type": "dashlist"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 4,
+        "x": 10,
+        "y": 22
+      },
+      "id": 5,
+      "options": {
+        "maxItems": 5,
+        "query": "",
+        "showHeadings": false,
+        "showRecentlyViewed": false,
+        "showSearch": false,
+        "showStarred": true,
+        "tags": []
+      },
+      "pluginVersion": "8.5.9",
+      "title": "Starred Dashboards",
+      "type": "dashlist"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "description": "",
+      "gridPos": {
+        "h": 9,
+        "w": 4,
+        "x": 14,
+        "y": 22
+      },
+      "id": 7,
+      "options": {
+        "alertInstanceLabelFilter": "",
+        "alertName": "",
+        "dashboardAlerts": false,
+        "dashboardTitle": "",
+        "groupBy": [],
+        "groupMode": "default",
+        "maxItems": 10,
+        "showOptions": "current",
+        "sortOrder": 3,
+        "stateFilter": {
+          "alerting": false,
+          "error": true,
+          "execution_error": false,
+          "firing": true,
+          "inactive": false,
+          "noData": false,
+          "no_data": false,
+          "normal": false,
+          "ok": false,
+          "paused": false,
+          "pending": false
+        },
+        "tags": []
+      },
+      "pluginVersion": "8.5.9",
+      "title": "Alert list",
+      "type": "alertlist"
+    }
+  ],
+  "refresh": "",
+  "schemaVersion": 36,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "Prometheus",
+          "value": "prometheus"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": "datasource",
+        "multi": false,
+        "name": "DS_PROMETHEUS",
+        "options": [],
+        "query": "prometheus",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "type": "datasource"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Homepage",
+  "uid": "xgoTjyMNz",
+  "version": 26,
+  "weekStart": ""
+}

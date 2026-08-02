@@ -1,0 +1,549 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": null,
+  "iteration": 1759833111580,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "description": "fio iops benchmark: blocksize=4k, iodepth=128",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 20,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "iops"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 14,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 2,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "lastNotNull",
+            "max",
+            "min"
+          ],
+          "displayMode": "table",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "builder",
+          "expr": "fio_read_iops_mean{benchmark=\"iops_read\", instance=\"$node\"}",
+          "interval": "",
+          "legendFormat": "read iops (sequential)",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "builder",
+          "expr": "fio_write_iops_mean{benchmark=\"iops_write\", instance=\"$node\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "write iops (sequential)",
+          "range": true,
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "builder",
+          "expr": "fio_read_iops_mean{benchmark=\"iops_randread\", instance=\"$node\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "read iops (random)",
+          "range": true,
+          "refId": "C"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "builder",
+          "expr": "fio_write_iops_mean{benchmark=\"iops_randwrite\", instance=\"$node\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "write iops (random)",
+          "range": true,
+          "refId": "D"
+        }
+      ],
+      "title": "IOPS",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "description": "fio throughput benchmark: blocksize=1m, iodepth=64",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 20,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "KBs"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 14,
+        "w": 24,
+        "x": 0,
+        "y": 14
+      },
+      "id": 3,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "lastNotNull",
+            "max",
+            "min"
+          ],
+          "displayMode": "table",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "builder",
+          "expr": "fio_read_bandwidth_kbps{benchmark=\"throughput_read\", instance=\"$node\"}",
+          "interval": "",
+          "legendFormat": "read bandwidth (sequential)",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "builder",
+          "expr": "fio_write_bandwidth_kbps{benchmark=\"throughput_write\", instance=\"$node\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "write bandwidth (sequential)",
+          "range": true,
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "builder",
+          "expr": "fio_read_bandwidth_kbps{benchmark=\"throughput_randread\", instance=\"$node\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "read bandwidth (random)",
+          "range": true,
+          "refId": "C"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "builder",
+          "expr": "fio_write_bandwidth_kbps{benchmark=\"throughput_randwrite\", instance=\"$node\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "write bandwidth (random)",
+          "range": true,
+          "refId": "D"
+        }
+      ],
+      "title": "Throughput",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "description": "fio latency benchmark: blocksize=4k, iodepth=1",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 20,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "\u00b5s"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 14,
+        "w": 24,
+        "x": 0,
+        "y": 28
+      },
+      "id": 4,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "lastNotNull",
+            "max",
+            "min"
+          ],
+          "displayMode": "table",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "builder",
+          "expr": "fio_read_lat_pct95{benchmark=\"latency_read\", instance=\"$node\"}",
+          "interval": "",
+          "legendFormat": "read latency (sequential)",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "builder",
+          "expr": "fio_write_lat_pct95{benchmark=\"latency_write\", instance=\"$node\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "write latency (sequential)",
+          "range": true,
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "builder",
+          "expr": "fio_read_lat_pct95{benchmark=\"latency_randread\", instance=\"$node\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "read latency (random)",
+          "range": true,
+          "refId": "C"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "builder",
+          "expr": "fio_write_lat_pct95{benchmark=\"latency_randwrite\", instance=\"$node\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "write latency (random)",
+          "range": true,
+          "refId": "D"
+        }
+      ],
+      "title": "Latency",
+      "type": "timeseries"
+    }
+  ],
+  "schemaVersion": 36,
+  "style": "dark",
+  "tags": [
+    "monitoring instances"
+  ],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "Prometheus",
+          "value": "prometheus"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": "datasource",
+        "multi": false,
+        "name": "DS_PROMETHEUS",
+        "options": [],
+        "query": "prometheus",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "type": "datasource"
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": "monitoring-swinburne-01.rc.nectar.org.au:19100",
+          "value": "monitoring-swinburne-01.rc.nectar.org.au:19100"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": "Host:",
+        "multi": false,
+        "name": "node",
+        "options": [
+          {
+            "selected": false,
+            "text": "monitoring-adelaide.rc.nectar.org.au:19100",
+            "value": "monitoring-adelaide.rc.nectar.org.au:19100"
+          },
+          {
+            "selected": false,
+            "text": "monitoring-ardc-syd-1.rc.nectar.org.au:19100",
+            "value": "monitoring-ardc-syd-1.rc.nectar.org.au:19100"
+          },
+          {
+            "selected": false,
+            "text": "monitoring-auckland.rc.nectar.org.au:19100",
+            "value": "monitoring-auckland.rc.nectar.org.au:19100"
+          },
+          {
+            "selected": false,
+            "text": "monitoring-intersect.rc.nectar.org.au:19100",
+            "value": "monitoring-intersect.rc.nectar.org.au:19100"
+          },
+          {
+            "selected": false,
+            "text": "monitoring-melbourne-qh2-uom.rc.nectar.org.au:19100",
+            "value": "monitoring-melbourne-qh2-uom.rc.nectar.org.au:19100"
+          },
+          {
+            "selected": false,
+            "text": "monitoring-melbourne-qh2.rc.nectar.org.au:19100",
+            "value": "monitoring-melbourne-qh2.rc.nectar.org.au:19100"
+          },
+          {
+            "selected": false,
+            "text": "monitoring-monash-01.rc.nectar.org.au:19100",
+            "value": "monitoring-monash-01.rc.nectar.org.au:19100"
+          },
+          {
+            "selected": false,
+            "text": "monitoring-monash-02.rc.nectar.org.au:19100",
+            "value": "monitoring-monash-02.rc.nectar.org.au:19100"
+          },
+          {
+            "selected": false,
+            "text": "monitoring-qriscloud.rc.nectar.org.au:19100",
+            "value": "monitoring-qriscloud.rc.nectar.org.au:19100"
+          },
+          {
+            "selected": true,
+            "text": "monitoring-swinburne-01.rc.nectar.org.au:19100",
+            "value": "monitoring-swinburne-01.rc.nectar.org.au:19100"
+          },
+          {
+            "selected": false,
+            "text": "monitoring-tasmania-02.rc.nectar.org.au:19100",
+            "value": "monitoring-tasmania-02.rc.nectar.org.au:19100"
+          },
+          {
+            "selected": false,
+            "text": "monitoring-tasmania-s.rc.nectar.org.au:19100",
+            "value": "monitoring-tasmania-s.rc.nectar.org.au:19100"
+          },
+          {
+            "selected": false,
+            "text": "monitoring-tasmania.rc.nectar.org.au:19100",
+            "value": "monitoring-tasmania.rc.nectar.org.au:19100"
+          }
+        ],
+        "query": "monitoring-adelaide.rc.nectar.org.au:19100,monitoring-ardc-syd-1.rc.nectar.org.au:19100,monitoring-auckland.rc.nectar.org.au:19100,monitoring-intersect.rc.nectar.org.au:19100,monitoring-melbourne-qh2-uom.rc.nectar.org.au:19100,monitoring-melbourne-qh2.rc.nectar.org.au:19100,monitoring-monash-01.rc.nectar.org.au:19100,monitoring-monash-02.rc.nectar.org.au:19100,monitoring-qriscloud.rc.nectar.org.au:19100,monitoring-swinburne-01.rc.nectar.org.au:19100,monitoring-tasmania-02.rc.nectar.org.au:19100,monitoring-tasmania-s.rc.nectar.org.au:19100,monitoring-tasmania.rc.nectar.org.au:19100,",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Monitoring Instances - Cinder Storage Performance - per site",
+  "uid": "qwk7oFYIk",
+  "version": 13,
+  "weekStart": ""
+}

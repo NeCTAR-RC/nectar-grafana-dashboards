@@ -1,0 +1,329 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
+        "enable": true,
+        "iconColor": "red",
+        "name": "upgrades",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [
+            "upgrades"
+          ],
+          "type": "tags"
+        }
+      }
+    ]
+  },
+  "description": "",
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": null,
+  "iteration": 1737602722946,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "Bps"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 2,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean"
+          ],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "repeat": "type",
+      "repeatDirection": "v",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "sum by (instance) (rate(node_network_transmit_bytes_total{device!~\"lo|docker0\", instance=~\"$type.*\"}[10m]) + rate(node_network_receive_bytes_total{device!~\"lo|docker0\", instance=~\"$type.*\"}[10m]))",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Traffic Rate - $type.*",
+      "type": "timeseries"
+    }
+  ],
+  "schemaVersion": 36,
+  "style": "dark",
+  "tags": [
+    "coreservices"
+  ],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "Prometheus",
+          "value": "prometheus"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": "datasource",
+        "multi": false,
+        "name": "DS_PROMETHEUS",
+        "options": [],
+        "query": "prometheus",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "type": "datasource"
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": [
+            "api1",
+            "worker1",
+            "api2",
+            "worker2",
+            "db",
+            "mq",
+            "sdn",
+            "ovn",
+            "puppet",
+            "vault",
+            "lb",
+            "monitoring",
+            "data",
+            "ceilometer",
+            "gnocchi",
+            "es",
+            "elk",
+            "bind",
+            "mc"
+          ],
+          "value": [
+            "api1",
+            "worker1",
+            "api2",
+            "worker2",
+            "db",
+            "mq",
+            "sdn",
+            "ovn",
+            "puppet",
+            "vault",
+            "lb",
+            "monitoring",
+            "data",
+            "ceilometer",
+            "gnocchi",
+            "es",
+            "elk",
+            "bind",
+            "mc"
+          ]
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": "Node Type",
+        "multi": true,
+        "name": "type",
+        "options": [
+          {
+            "selected": true,
+            "text": "api1",
+            "value": "api1"
+          },
+          {
+            "selected": true,
+            "text": "worker1",
+            "value": "worker1"
+          },
+          {
+            "selected": true,
+            "text": "api2",
+            "value": "api2"
+          },
+          {
+            "selected": true,
+            "text": "worker2",
+            "value": "worker2"
+          },
+          {
+            "selected": true,
+            "text": "db",
+            "value": "db"
+          },
+          {
+            "selected": true,
+            "text": "mq",
+            "value": "mq"
+          },
+          {
+            "selected": true,
+            "text": "sdn",
+            "value": "sdn"
+          },
+          {
+            "selected": true,
+            "text": "ovn",
+            "value": "ovn"
+          },
+          {
+            "selected": true,
+            "text": "puppet",
+            "value": "puppet"
+          },
+          {
+            "selected": true,
+            "text": "vault",
+            "value": "vault"
+          },
+          {
+            "selected": true,
+            "text": "lb",
+            "value": "lb"
+          },
+          {
+            "selected": true,
+            "text": "monitoring",
+            "value": "monitoring"
+          },
+          {
+            "selected": true,
+            "text": "data",
+            "value": "data"
+          },
+          {
+            "selected": true,
+            "text": "ceilometer",
+            "value": "ceilometer"
+          },
+          {
+            "selected": true,
+            "text": "gnocchi",
+            "value": "gnocchi"
+          },
+          {
+            "selected": true,
+            "text": "es",
+            "value": "es"
+          },
+          {
+            "selected": true,
+            "text": "elk",
+            "value": "elk"
+          },
+          {
+            "selected": true,
+            "text": "bind",
+            "value": "bind"
+          },
+          {
+            "selected": true,
+            "text": "mc",
+            "value": "mc"
+          },
+          {
+            "selected": false,
+            "text": "prom",
+            "value": "prom"
+          },
+          {
+            "selected": false,
+            "text": "mon2021",
+            "value": "mon2021"
+          }
+        ],
+        "query": "api1,worker1,api2,worker2,db,mq,sdn,ovn,puppet,vault,lb,monitoring,data,ceilometer,gnocchi,es,elk,bind,mc,prom,mon2021",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-12h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Infra Network Traffic",
+  "uid": "WBFi5ZGHz",
+  "version": 5,
+  "weekStart": ""
+}

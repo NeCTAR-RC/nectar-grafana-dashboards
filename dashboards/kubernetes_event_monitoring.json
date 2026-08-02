@@ -1,0 +1,1380 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "limit": 100,
+        "name": "Annotations & Alerts",
+        "showIn": 0,
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "description": "",
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "gnetId": 16695,
+  "graphTooltip": 2,
+  "id": null,
+  "iteration": 1731580185706,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "collapsed": false,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "${DS_ELASTICSEARCH}"
+      },
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 133,
+      "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "${DS_ELASTICSEARCH}"
+          },
+          "refId": "A"
+        }
+      ],
+      "title": "Visualization",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "${DS_ELASTICSEARCH}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "bars",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 1
+      },
+      "hideTimeOverride": true,
+      "id": 126,
+      "links": [],
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "8.5.9",
+      "targets": [
+        {
+          "alias": "",
+          "bucketAggs": [
+            {
+              "field": "type.keyword",
+              "id": "3",
+              "settings": {
+                "min_doc_count": "0",
+                "order": "desc",
+                "orderBy": "1",
+                "size": "5"
+              },
+              "type": "terms"
+            },
+            {
+              "field": "firstTimestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": "1"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "${DS_ELASTICSEARCH}"
+          },
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "type.keyword:$type AND metadata.namespace.keyword:$namespace AND source.component.keyword:$component",
+          "refId": "A",
+          "timeField": "firstTimestamp"
+        }
+      ],
+      "timeShift": "1m",
+      "title": "Kubernetes Events Count",
+      "transformations": [],
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "${DS_ELASTICSEARCH}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "decimals": 0,
+          "mappings": [],
+          "unit": "none"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Job"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#ffc701",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Pod"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#17019b",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "CronJob"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#b7a4ff",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 0,
+        "y": 9
+      },
+      "hideTimeOverride": false,
+      "id": 139,
+      "links": [],
+      "options": {
+        "displayLabels": [],
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "values": [
+            "value",
+            "percent"
+          ]
+        },
+        "pieType": "donut",
+        "reduceOptions": {
+          "calcs": [
+            "sum"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "7.5.12",
+      "targets": [
+        {
+          "alias": "",
+          "bucketAggs": [
+            {
+              "field": "reason.keyword",
+              "id": "3",
+              "settings": {
+                "order": "desc",
+                "orderBy": "1",
+                "size": "5"
+              },
+              "type": "terms"
+            },
+            {
+              "field": "firstTimestamp",
+              "id": "4",
+              "settings": {
+                "interval": "auto",
+                "trimEdges": "0"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "${DS_ELASTICSEARCH}"
+          },
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "type.keyword:$type AND metadata.namespace.keyword:$namespace AND source.component.keyword:$component",
+          "refId": "A",
+          "timeField": "firstTimestamp"
+        }
+      ],
+      "title": "Event Reason",
+      "transformations": [],
+      "type": "piechart"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "${DS_ELASTICSEARCH}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "decimals": 0,
+          "mappings": [],
+          "unit": "none"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Job"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#ffc701",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Pod"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#17019b",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "CronJob"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#b7a4ff",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 6,
+        "y": 9
+      },
+      "hideTimeOverride": false,
+      "id": 136,
+      "links": [],
+      "options": {
+        "displayLabels": [],
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "values": [
+            "value",
+            "percent"
+          ]
+        },
+        "pieType": "donut",
+        "reduceOptions": {
+          "calcs": [
+            "sum"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "7.5.12",
+      "targets": [
+        {
+          "alias": "",
+          "bucketAggs": [
+            {
+              "field": "involvedObject.kind.keyword",
+              "id": "3",
+              "settings": {
+                "order": "desc",
+                "orderBy": "1",
+                "size": "5"
+              },
+              "type": "terms"
+            },
+            {
+              "field": "firstTimestamp",
+              "id": "4",
+              "settings": {
+                "interval": "auto",
+                "trimEdges": "0"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "${DS_ELASTICSEARCH}"
+          },
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "type.keyword:$type AND metadata.namespace.keyword:$namespace AND source.component.keyword:$component",
+          "refId": "A",
+          "timeField": "firstTimestamp"
+        }
+      ],
+      "title": "Object Kind",
+      "transformations": [],
+      "type": "piechart"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "${DS_ELASTICSEARCH}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "decimals": 0,
+          "mappings": [],
+          "unit": "none"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Job"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#ffc701",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Pod"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#17019b",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "CronJob"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#b7a4ff",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 12,
+        "y": 9
+      },
+      "hideTimeOverride": false,
+      "id": 140,
+      "links": [],
+      "options": {
+        "displayLabels": [],
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "values": [
+            "value",
+            "percent"
+          ]
+        },
+        "pieType": "donut",
+        "reduceOptions": {
+          "calcs": [
+            "sum"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "7.5.12",
+      "targets": [
+        {
+          "alias": "",
+          "bucketAggs": [
+            {
+              "field": "involvedObject.namespace.keyword",
+              "id": "3",
+              "settings": {
+                "order": "desc",
+                "orderBy": "1",
+                "size": "5"
+              },
+              "type": "terms"
+            },
+            {
+              "field": "firstTimestamp",
+              "id": "4",
+              "settings": {
+                "interval": "auto",
+                "trimEdges": "0"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "${DS_ELASTICSEARCH}"
+          },
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "type.keyword:$type AND metadata.namespace.keyword:$namespace AND source.component.keyword:$component",
+          "refId": "A",
+          "timeField": "firstTimestamp"
+        }
+      ],
+      "title": "Namespaces",
+      "transformations": [],
+      "type": "piechart"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "${DS_ELASTICSEARCH}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "decimals": 0,
+          "mappings": [],
+          "unit": "none"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "job-controller"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#ffc701",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "kubelet"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#17019b",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "cronjob-controller"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#b7a4ff",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 18,
+        "y": 9
+      },
+      "hideTimeOverride": false,
+      "id": 137,
+      "links": [],
+      "options": {
+        "displayLabels": [],
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "values": [
+            "value",
+            "percent"
+          ]
+        },
+        "pieType": "donut",
+        "reduceOptions": {
+          "calcs": [
+            "sum"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "7.5.12",
+      "targets": [
+        {
+          "alias": "",
+          "bucketAggs": [
+            {
+              "field": "source.component.keyword",
+              "id": "3",
+              "settings": {
+                "order": "desc",
+                "orderBy": "1",
+                "size": "5"
+              },
+              "type": "terms"
+            },
+            {
+              "field": "firstTimestamp",
+              "id": "4",
+              "settings": {
+                "interval": "auto",
+                "trimEdges": "0"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "${DS_ELASTICSEARCH}"
+          },
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "type.keyword:$type AND metadata.namespace.keyword:$namespace AND source.component.keyword:$component",
+          "refId": "A",
+          "timeField": "firstTimestamp"
+        }
+      ],
+      "title": "Source Component",
+      "transformations": [],
+      "type": "piechart"
+    },
+    {
+      "collapsed": false,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "${DS_ELASTICSEARCH}"
+      },
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 17
+      },
+      "id": 135,
+      "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "${DS_ELASTICSEARCH}"
+          },
+          "refId": "A"
+        }
+      ],
+      "title": "Details",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "${DS_ELASTICSEARCH}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "displayMode": "auto",
+            "filterable": true,
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#4f32ef",
+                "value": null
+              },
+              {
+                "color": "#ff6067",
+                "value": ""
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Kind"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 179
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Type"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 90
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Host"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 141
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Component"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 237
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Messages"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 1597
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Namespaces"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 192
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Reason"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 154
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Metadata"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 471
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Timestamp"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 280
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 23,
+        "w": 24,
+        "x": 0,
+        "y": 18
+      },
+      "id": 131,
+      "options": {
+        "footer": {
+          "enablePagination": true,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": []
+      },
+      "pluginVersion": "8.5.9",
+      "targets": [
+        {
+          "bucketAggs": [],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "${DS_ELASTICSEARCH}"
+          },
+          "metrics": [
+            {
+              "hide": false,
+              "id": "1",
+              "settings": {
+                "size": "200"
+              },
+              "type": "raw_data"
+            }
+          ],
+          "query": "type.keyword:$type AND metadata.namespace.keyword:$namespace AND source.component.keyword:$component",
+          "refId": "A",
+          "timeField": "firstTimestamp"
+        }
+      ],
+      "title": "Kubernetes Event History",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "@metadata.beat": true,
+              "@metadata.type": true,
+              "@metadata.version": true,
+              "_id": true,
+              "_index": true,
+              "_type": true,
+              "agent.ephemeral_id": true,
+              "agent.hostname": true,
+              "agent.id": true,
+              "agent.name": true,
+              "agent.type": true,
+              "agent.version": true,
+              "alertStatusId": true,
+              "clusterName": true,
+              "continueCount": true,
+              "count": true,
+              "event.dataset": true,
+              "event.module": true,
+              "eventTime": true,
+              "expression": true,
+              "highlight": true,
+              "involvedObject.annotations.argocd.argoproj.io/refresh": true,
+              "involvedObject.annotations.batch.kubernetes.io/cronjob-scheduled-timestamp": true,
+              "involvedObject.annotations.checksum/config": true,
+              "involvedObject.annotations.checksum/config-apache": true,
+              "involvedObject.annotations.checksum/config-shibd": true,
+              "involvedObject.annotations.checksum/configmap": true,
+              "involvedObject.annotations.checksum/health": true,
+              "involvedObject.annotations.checksum/scripts": true,
+              "involvedObject.annotations.checksum/secret": true,
+              "involvedObject.annotations.cni.projectcalico.org/containerID": true,
+              "involvedObject.annotations.cni.projectcalico.org/podIP": true,
+              "involvedObject.annotations.cni.projectcalico.org/podIPs": true,
+              "involvedObject.annotations.deployment.kubernetes.io/desired-replicas": true,
+              "involvedObject.annotations.deployment.kubernetes.io/max-replicas": true,
+              "involvedObject.annotations.deployment.kubernetes.io/revision": true,
+              "involvedObject.annotations.helm.sh/hook": true,
+              "involvedObject.annotations.helm.sh/hook-delete-policy": true,
+              "involvedObject.annotations.helm.sh/hook-weight": true,
+              "involvedObject.annotations.kubectl.kubernetes.io/last-applied-configuration": true,
+              "involvedObject.annotations.kubectl.kubernetes.io/restartedAt": true,
+              "involvedObject.annotations.longhorn.io/last-applied-cronjob-spec": true,
+              "involvedObject.annotations.meta.helm.sh/release-name": true,
+              "involvedObject.annotations.meta.helm.sh/release-namespace": true,
+              "involvedObject.annotations.prometheus.io/port": true,
+              "involvedObject.annotations.prometheus.io/scrape": true,
+              "involvedObject.annotations.vault.hashicorp.com/agent-init-first": true,
+              "involvedObject.annotations.vault.hashicorp.com/agent-inject": true,
+              "involvedObject.annotations.vault.hashicorp.com/agent-inject-secret-backendcert.pem": true,
+              "involvedObject.annotations.vault.hashicorp.com/agent-inject-secret-backendkey.pem": true,
+              "involvedObject.annotations.vault.hashicorp.com/agent-inject-secret-db_password_store": true,
+              "involvedObject.annotations.vault.hashicorp.com/agent-inject-secret-freshdesk_key_store": true,
+              "involvedObject.annotations.vault.hashicorp.com/agent-inject-secret-password_reset_store": true,
+              "involvedObject.annotations.vault.hashicorp.com/agent-inject-secret-secret_envs": true,
+              "involvedObject.annotations.vault.hashicorp.com/agent-inject-secret-secret_key_store": true,
+              "involvedObject.annotations.vault.hashicorp.com/agent-inject-secret-secrets.conf": true,
+              "involvedObject.annotations.vault.hashicorp.com/agent-inject-status": true,
+              "involvedObject.annotations.vault.hashicorp.com/agent-inject-template-backendcert.pem": true,
+              "involvedObject.annotations.vault.hashicorp.com/agent-inject-template-backendkey.pem": true,
+              "involvedObject.annotations.vault.hashicorp.com/agent-inject-template-db_password_store": true,
+              "involvedObject.annotations.vault.hashicorp.com/agent-inject-template-freshdesk_key_store": true,
+              "involvedObject.annotations.vault.hashicorp.com/agent-inject-template-password_reset_store": true,
+              "involvedObject.annotations.vault.hashicorp.com/agent-inject-template-secret_envs": true,
+              "involvedObject.annotations.vault.hashicorp.com/agent-inject-template-secret_key_store": true,
+              "involvedObject.annotations.vault.hashicorp.com/agent-inject-template-secrets.conf": true,
+              "involvedObject.annotations.vault.hashicorp.com/agent-pre-populate-only": true,
+              "involvedObject.annotations.vault.hashicorp.com/role": true,
+              "involvedObject.annotations.vault.hashicorp.com/secret-volume-path-secrets.conf": true,
+              "involvedObject.apiVersion": true,
+              "involvedObject.deleted": true,
+              "involvedObject.fieldPath": true,
+              "involvedObject.labels.app.kubernetes.io/component": true,
+              "involvedObject.labels.app.kubernetes.io/instance": true,
+              "involvedObject.labels.app.kubernetes.io/managed-by": true,
+              "involvedObject.labels.app.kubernetes.io/name": true,
+              "involvedObject.labels.app.kubernetes.io/version": true,
+              "involvedObject.labels.apps.kubernetes.io/pod-index": true,
+              "involvedObject.labels.batch.kubernetes.io/controller-uid": true,
+              "involvedObject.labels.batch.kubernetes.io/job-name": true,
+              "involvedObject.labels.controller-revision-hash": true,
+              "involvedObject.labels.controller-uid": true,
+              "involvedObject.labels.helm.sh/chart": true,
+              "involvedObject.labels.job-name": true,
+              "involvedObject.labels.k8slens-edit-resource-version": true,
+              "involvedObject.labels.longhorn.io/backing-image": true,
+              "involvedObject.labels.longhorn.io/managed-by": true,
+              "involvedObject.labels.longhorndiskuuid": true,
+              "involvedObject.labels.longhornnode": true,
+              "involvedObject.labels.longhornvolume": true,
+              "involvedObject.labels.pod-template-hash": true,
+              "involvedObject.labels.recurring-job-group.longhorn.io/default": true,
+              "involvedObject.labels.recurring-job.longhorn.io": true,
+              "involvedObject.labels.setting.longhorn.io/remove-snapshots-during-filesystem-trim": true,
+              "involvedObject.labels.setting.longhorn.io/replica-auto-balance": true,
+              "involvedObject.labels.setting.longhorn.io/snapshot-data-integrity": true,
+              "involvedObject.labels.statefulset.kubernetes.io/pod-name": true,
+              "involvedObject.name": true,
+              "involvedObject.namespace": true,
+              "involvedObject.ownerReferences": true,
+              "involvedObject.resourceVersion": true,
+              "involvedObject.uid": true,
+              "jmsightId": true,
+              "kubernetes.event.involved_object.api_version": true,
+              "kubernetes.event.involved_object.kind": false,
+              "kubernetes.event.involved_object.name": false,
+              "kubernetes.event.involved_object.resource_version": true,
+              "kubernetes.event.involved_object.uid": true,
+              "kubernetes.event.metadata.annotations.dest-namespace": true,
+              "kubernetes.event.metadata.annotations.dest-server": true,
+              "kubernetes.event.metadata.generate_name": true,
+              "kubernetes.event.metadata.name": true,
+              "kubernetes.event.metadata.namespace": false,
+              "kubernetes.event.metadata.resource_version": true,
+              "kubernetes.event.metadata.self_link": true,
+              "kubernetes.event.metadata.timestamp.created": true,
+              "kubernetes.event.metadata.uid": true,
+              "kubernetes.event.timestamp.first_occurrence": true,
+              "kubernetes.event.timestamp.last_occurrence": true,
+              "lastTimestamp": true,
+              "logFileId": true,
+              "matchedTargets": true,
+              "metadata.annotations.dest-namespace": true,
+              "metadata.annotations.dest-server": true,
+              "metadata.annotations.spec": true,
+              "metadata.annotations.user": true,
+              "metadata.creationTimestamp": true,
+              "metadata.resourceVersion": true,
+              "metadata.uid": true,
+              "metricset.name": true,
+              "period": true,
+              "reportingComponent": true,
+              "reportingInstance": true,
+              "sort": true,
+              "tags": false,
+              "value": true,
+              "valueField": true
+            },
+            "indexByName": {
+              "_id": 0,
+              "_index": 1,
+              "_type": 2,
+              "clusterName": 7,
+              "count": 8,
+              "eventTime": 9,
+              "firstTimestamp": 5,
+              "highlight": 3,
+              "involvedObject.annotations.batch.kubernetes.io/cronjob-scheduled-timestamp": 10,
+              "involvedObject.annotations.cni.projectcalico.org/containerID": 11,
+              "involvedObject.annotations.cni.projectcalico.org/podIP": 12,
+              "involvedObject.annotations.cni.projectcalico.org/podIPs": 13,
+              "involvedObject.annotations.kubectl.kubernetes.io/last-applied-configuration": 14,
+              "involvedObject.annotations.vault.hashicorp.com/agent-init-first": 15,
+              "involvedObject.annotations.vault.hashicorp.com/agent-inject": 16,
+              "involvedObject.annotations.vault.hashicorp.com/agent-inject-secret-secret_envs": 17,
+              "involvedObject.annotations.vault.hashicorp.com/agent-inject-status": 18,
+              "involvedObject.annotations.vault.hashicorp.com/agent-inject-template-secret_envs": 19,
+              "involvedObject.annotations.vault.hashicorp.com/agent-pre-populate-only": 20,
+              "involvedObject.annotations.vault.hashicorp.com/role": 21,
+              "involvedObject.apiVersion": 22,
+              "involvedObject.deleted": 23,
+              "involvedObject.fieldPath": 24,
+              "involvedObject.kind": 25,
+              "involvedObject.labels.app.kubernetes.io/component": 26,
+              "involvedObject.labels.app.kubernetes.io/instance": 27,
+              "involvedObject.labels.app.kubernetes.io/managed-by": 28,
+              "involvedObject.labels.app.kubernetes.io/name": 29,
+              "involvedObject.labels.app.kubernetes.io/version": 30,
+              "involvedObject.labels.batch.kubernetes.io/controller-uid": 31,
+              "involvedObject.labels.batch.kubernetes.io/job-name": 32,
+              "involvedObject.labels.controller-uid": 33,
+              "involvedObject.labels.helm.sh/chart": 34,
+              "involvedObject.labels.job-name": 35,
+              "involvedObject.name": 36,
+              "involvedObject.namespace": 37,
+              "involvedObject.ownerReferences": 38,
+              "involvedObject.resourceVersion": 39,
+              "involvedObject.uid": 40,
+              "lastTimestamp": 41,
+              "message": 52,
+              "metadata.creationTimestamp": 42,
+              "metadata.name": 43,
+              "metadata.namespace": 44,
+              "metadata.resourceVersion": 45,
+              "metadata.uid": 46,
+              "reason": 47,
+              "reportingComponent": 48,
+              "reportingInstance": 49,
+              "sort": 4,
+              "source.component": 50,
+              "source.host": 51,
+              "type": 6
+            },
+            "renameByName": {
+              "@timestamp": "Timestamp",
+              "_id": "",
+              "agent.hostname": "",
+              "alertId": "Id",
+              "alertLevel": "Alert Level",
+              "alertName": "Name",
+              "alertStatusId": "",
+              "category": "Category",
+              "clusterName": "",
+              "continueCount": "",
+              "dashboardUrl": "Dashboard",
+              "expression": "",
+              "firstTimestamp": "Timestamp",
+              "involvedObject.kind": "Kind",
+              "kubernetes.event.count": "Count",
+              "kubernetes.event.involved_object.kind": "Kind",
+              "kubernetes.event.involved_object.name": "Object",
+              "kubernetes.event.message": "Message",
+              "kubernetes.event.metadata.namespace": "Namespace",
+              "kubernetes.event.metadata.uid": "",
+              "kubernetes.event.reason": "Reason",
+              "kubernetes.event.source.component": "Component",
+              "kubernetes.event.source.host": "Node",
+              "kubernetes.event.timestamp.first_occurrence": "",
+              "kubernetes.event.type": "Type",
+              "logViewerUrl": "Log Viewer",
+              "message": "Messages",
+              "metadata.name": "Metadata",
+              "metadata.namespace": "Namespaces",
+              "reason": "Reason",
+              "sending": "Sending",
+              "sort": "",
+              "source.component": "Component",
+              "source.host": "Host",
+              "status": "Status",
+              "tags": "Tags",
+              "targetName": "Target Name",
+              "textMessage": "Message",
+              "type": "Type"
+            }
+          }
+        },
+        {
+          "id": "sortBy",
+          "options": {
+            "fields": {},
+            "sort": [
+              {
+                "desc": true,
+                "field": "Timestamp"
+              }
+            ]
+          }
+        }
+      ],
+      "type": "table"
+    }
+  ],
+  "refresh": "",
+  "schemaVersion": 36,
+  "style": "dark",
+  "tags": [
+    "kubernetes"
+  ],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "Elasticsearch",
+          "value": "elasticsearch"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": "datasource",
+        "multi": false,
+        "name": "DS_ELASTICSEARCH",
+        "options": [],
+        "query": "elasticsearch",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "type": "datasource"
+      },
+      {
+        "allValue": "*",
+        "current": {
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": {
+          "type": "elasticsearch",
+          "uid": "${DS_ELASTICSEARCH}"
+        },
+        "definition": "{\"find\": \"terms\", \"field\": \"type.keyword\"}",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Type",
+        "multi": true,
+        "name": "type",
+        "options": [],
+        "query": "{\"find\": \"terms\", \"field\": \"type.keyword\"}",
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 2,
+        "tagValuesQuery": "",
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": "*",
+        "current": {
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": {
+          "type": "elasticsearch",
+          "uid": "${DS_ELASTICSEARCH}"
+        },
+        "definition": "{\"find\": \"terms\", \"field\": \"metadata.namespace.keyword\"}",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Namespace",
+        "multi": true,
+        "name": "namespace",
+        "options": [],
+        "query": "{\"find\": \"terms\", \"field\": \"metadata.namespace.keyword\"}",
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": "*",
+        "current": {
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": {
+          "type": "elasticsearch",
+          "uid": "${DS_ELASTICSEARCH}"
+        },
+        "definition": "{\"find\": \"terms\", \"field\": \"source.component.keyword\"}",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Component",
+        "multi": true,
+        "name": "component",
+        "options": [],
+        "query": "{\"find\": \"terms\", \"field\": \"source.component.keyword\"}",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      }
+    ]
+  },
+  "time": {
+    "from": "now-3h",
+    "to": "now"
+  },
+  "timepicker": {
+    "hidden": false,
+    "nowDelay": "",
+    "refresh_intervals": [
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "timezone": "browser",
+  "title": "Kubernetes Event Monitoring",
+  "uid": "S3PfEWiVz",
+  "version": 3,
+  "weekStart": ""
+}

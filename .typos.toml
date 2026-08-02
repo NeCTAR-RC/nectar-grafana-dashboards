@@ -1,0 +1,9 @@
+[default]
+# Grafana dashboard uids are opaque identifiers, not English words -
+# never "correct" them (typos once rewrote uid hiDwRREIz -> hiDwRREIs,
+# which breaks dashboard links and provisioning identity).
+extend-ignore-re = ['"uid": "[^"]*"']
+
+[default.extend-identifiers]
+# SQL statement plural in panel descriptions.
+SELECTs = "SELECTs"

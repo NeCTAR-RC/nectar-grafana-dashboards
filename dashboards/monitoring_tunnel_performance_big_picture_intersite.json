@@ -1,0 +1,313 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": null,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "description": "",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 22,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "hiddenSeries": false,
+      "id": 2,
+      "interval": "5m",
+      "legend": {
+        "avg": true,
+        "current": false,
+        "max": false,
+        "min": false,
+        "rightSide": true,
+        "show": true,
+        "sideWidth": 300,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "8.5.9",
+      "pointradius": 1,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "$$hashKey": "object:64",
+          "alias": "OUT",
+          "transform": "negative-Y"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "expr": "avg_over_time(iperf3_received_bytes[1h]) / avg_over_time(iperf3_received_seconds[1h]) * 8",
+          "interval": "",
+          "legendFormat": "From {{job}} To {{instance}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeRegions": [],
+      "title": "Network Performance For Monitoring Instance (From as iperf client, To as the iperf server)",
+      "tooltip": {
+        "shared": true,
+        "sort": 1,
+        "value_type": "individual"
+      },
+      "transformations": [
+        {
+          "id": "filterFieldsByName",
+          "options": {
+            "include": {
+              "names": [
+                "Time",
+                "From adelaide To monitoring-ardc-syd-1-internal",
+                "From adelaide To monitoring-auckland-internal",
+                "From adelaide To monitoring-intersect-internal",
+                "From adelaide To monitoring-melbourne-qh2-internal",
+                "From adelaide To monitoring-melbourne-qh2-uom-internal",
+                "From adelaide To monitoring-monash-01-internal",
+                "From adelaide To monitoring-monash-02-internal",
+                "From adelaide To monitoring-qriscloud-internal",
+                "From adelaide To monitoring-swinburne-01-internal",
+                "From adelaide To monitoring-tasmania-02-internal",
+                "From adelaide To monitoring-tasmania-internal",
+                "From ardc-syd-1 To monitoring-adelaide-internal",
+                "From ardc-syd-1 To monitoring-auckland-internal",
+                "From ardc-syd-1 To monitoring-intersect-internal",
+                "From ardc-syd-1 To monitoring-melbourne-qh2-internal",
+                "From ardc-syd-1 To monitoring-melbourne-qh2-uom-internal",
+                "From ardc-syd-1 To monitoring-monash-01-internal",
+                "From ardc-syd-1 To monitoring-monash-02-internal",
+                "From ardc-syd-1 To monitoring-qriscloud-internal",
+                "From ardc-syd-1 To monitoring-swinburne-01-internal",
+                "From ardc-syd-1 To monitoring-tasmania-02-internal",
+                "From ardc-syd-1 To monitoring-tasmania-internal",
+                "From auckland To monitoring-adelaide-internal",
+                "From auckland To monitoring-ardc-syd-1-internal",
+                "From auckland To monitoring-intersect-internal",
+                "From auckland To monitoring-melbourne-qh2-internal",
+                "From auckland To monitoring-melbourne-qh2-uom-internal",
+                "From auckland To monitoring-monash-01-internal",
+                "From auckland To monitoring-monash-02-internal",
+                "From auckland To monitoring-qriscloud-internal",
+                "From auckland To monitoring-swinburne-01-internal",
+                "From auckland To monitoring-tasmania-02-internal",
+                "From auckland To monitoring-tasmania-internal",
+                "From intersect To monitoring-adelaide-internal",
+                "From intersect To monitoring-ardc-syd-1-internal",
+                "From intersect To monitoring-auckland-internal",
+                "From intersect To monitoring-melbourne-qh2-internal",
+                "From intersect To monitoring-melbourne-qh2-uom-internal",
+                "From intersect To monitoring-monash-01-internal",
+                "From intersect To monitoring-monash-02-internal",
+                "From intersect To monitoring-swinburne-01-internal",
+                "From intersect To monitoring-tasmania-02-internal",
+                "From intersect To monitoring-tasmania-internal",
+                "From melbourne-qh2 To monitoring-adelaide-internal",
+                "From melbourne-qh2 To monitoring-ardc-syd-1-internal",
+                "From melbourne-qh2 To monitoring-auckland-internal",
+                "From melbourne-qh2 To monitoring-intersect-internal",
+                "From melbourne-qh2 To monitoring-monash-01-internal",
+                "From melbourne-qh2 To monitoring-monash-02-internal",
+                "From melbourne-qh2 To monitoring-qriscloud-internal",
+                "From melbourne-qh2 To monitoring-swinburne-01-internal",
+                "From melbourne-qh2 To monitoring-tasmania-02-internal",
+                "From melbourne-qh2 To monitoring-tasmania-internal",
+                "From melbourne-qh2-uom To monitoring-adelaide-internal",
+                "From melbourne-qh2-uom To monitoring-ardc-syd-1-internal",
+                "From melbourne-qh2-uom To monitoring-auckland-internal",
+                "From melbourne-qh2-uom To monitoring-intersect-internal",
+                "From melbourne-qh2-uom To monitoring-monash-01-internal",
+                "From melbourne-qh2-uom To monitoring-monash-02-internal",
+                "From melbourne-qh2-uom To monitoring-qriscloud-internal",
+                "From melbourne-qh2-uom To monitoring-swinburne-01-internal",
+                "From melbourne-qh2-uom To monitoring-tasmania-02-internal",
+                "From melbourne-qh2-uom To monitoring-tasmania-internal",
+                "From monash-01 To monitoring-adelaide-internal",
+                "From monash-01 To monitoring-ardc-syd-1-internal",
+                "From monash-01 To monitoring-auckland-internal",
+                "From monash-01 To monitoring-intersect-internal",
+                "From monash-01 To monitoring-melbourne-qh2-internal",
+                "From monash-01 To monitoring-melbourne-qh2-uom-internal",
+                "From monash-01 To monitoring-qriscloud-internal",
+                "From monash-01 To monitoring-swinburne-01-internal",
+                "From monash-01 To monitoring-tasmania-02-internal",
+                "From monash-01 To monitoring-tasmania-internal",
+                "From monash-02 To monitoring-adelaide-internal",
+                "From monash-02 To monitoring-ardc-syd-1-internal",
+                "From monash-02 To monitoring-auckland-internal",
+                "From monash-02 To monitoring-intersect-internal",
+                "From monash-02 To monitoring-melbourne-qh2-internal",
+                "From monash-02 To monitoring-melbourne-qh2-uom-internal",
+                "From monash-02 To monitoring-qriscloud-internal",
+                "From monash-02 To monitoring-swinburne-01-internal",
+                "From monash-02 To monitoring-tasmania-02-internal",
+                "From monash-02 To monitoring-tasmania-internal",
+                "From qriscloud To monitoring-adelaide-internal",
+                "From qriscloud To monitoring-ardc-syd-1-internal",
+                "From qriscloud To monitoring-auckland-internal",
+                "From qriscloud To monitoring-melbourne-qh2-internal",
+                "From qriscloud To monitoring-melbourne-qh2-uom-internal",
+                "From qriscloud To monitoring-monash-01-internal",
+                "From qriscloud To monitoring-monash-02-internal",
+                "From qriscloud To monitoring-swinburne-01-internal",
+                "From qriscloud To monitoring-tasmania-02-internal",
+                "From qriscloud To monitoring-tasmania-internal",
+                "From swinburne-01 To monitoring-adelaide-internal",
+                "From swinburne-01 To monitoring-ardc-syd-1-internal",
+                "From swinburne-01 To monitoring-auckland-internal",
+                "From swinburne-01 To monitoring-intersect-internal",
+                "From swinburne-01 To monitoring-melbourne-qh2-internal",
+                "From swinburne-01 To monitoring-melbourne-qh2-uom-internal",
+                "From swinburne-01 To monitoring-monash-01-internal",
+                "From swinburne-01 To monitoring-monash-02-internal",
+                "From swinburne-01 To monitoring-qriscloud-internal",
+                "From swinburne-01 To monitoring-tasmania-02-internal",
+                "From swinburne-01 To monitoring-tasmania-internal",
+                "From tasmania To monitoring-adelaide-internal",
+                "From tasmania To monitoring-ardc-syd-1-internal",
+                "From tasmania To monitoring-auckland-internal",
+                "From tasmania To monitoring-intersect-internal",
+                "From tasmania To monitoring-melbourne-qh2-internal",
+                "From tasmania To monitoring-melbourne-qh2-uom-internal",
+                "From tasmania To monitoring-monash-01-internal",
+                "From tasmania To monitoring-monash-02-internal",
+                "From tasmania To monitoring-qriscloud-internal",
+                "From tasmania To monitoring-swinburne-01-internal",
+                "From tasmania To monitoring-tasmania-02-internal",
+                "From tasmania-02 To monitoring-adelaide-internal",
+                "From tasmania-02 To monitoring-ardc-syd-1-internal",
+                "From tasmania-02 To monitoring-auckland-internal",
+                "From tasmania-02 To monitoring-intersect-internal",
+                "From tasmania-02 To monitoring-melbourne-qh2-internal",
+                "From tasmania-02 To monitoring-melbourne-qh2-uom-internal",
+                "From tasmania-02 To monitoring-monash-01-internal",
+                "From tasmania-02 To monitoring-monash-02-internal",
+                "From tasmania-02 To monitoring-qriscloud-internal",
+                "From tasmania-02 To monitoring-swinburne-01-internal",
+                "From tasmania-02 To monitoring-tasmania-internal",
+                "From tasmania-s To monitoring-adelaide-internal",
+                "From tasmania-s To monitoring-ardc-syd-1-internal",
+                "From tasmania-s To monitoring-auckland-internal",
+                "From tasmania-s To monitoring-intersect-internal",
+                "From tasmania-s To monitoring-melbourne-qh2-internal",
+                "From tasmania-s To monitoring-melbourne-qh2-uom-internal",
+                "From tasmania-s To monitoring-monash-01-internal",
+                "From tasmania-s To monitoring-monash-02-internal",
+                "From tasmania-s To monitoring-qriscloud-internal",
+                "From tasmania-s To monitoring-swinburne-01-internal",
+                "From tasmania-s To monitoring-tasmania-02-internal"
+              ]
+            }
+          }
+        }
+      ],
+      "type": "graph",
+      "xaxis": {
+        "mode": "time",
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:71",
+          "format": "binbps",
+          "logBase": 1,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:72",
+          "format": "binbps",
+          "logBase": 1,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false
+      }
+    }
+  ],
+  "schemaVersion": 36,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "Prometheus",
+          "value": "prometheus"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": "datasource",
+        "multi": false,
+        "name": "DS_PROMETHEUS",
+        "options": [],
+        "query": "prometheus",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "type": "datasource"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-40d",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Monitoring Tunnel Performance Big Picture (inter-site only)",
+  "uid": "7X6KW_Rvk",
+  "version": 3,
+  "weekStart": ""
+}
