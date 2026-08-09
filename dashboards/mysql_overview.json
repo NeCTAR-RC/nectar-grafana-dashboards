@@ -2100,15 +2100,6 @@
           "step": 20
         },
         {
-          "expr": "mysql_global_variables_innodb_additional_mem_pool_size{instance=\"$host\"}",
-          "format": "time_series",
-          "interval": "$interval",
-          "intervalFactor": 2,
-          "legendFormat": "InnoDB Additional Memory Pool Size",
-          "refId": "H",
-          "step": 40
-        },
-        {
           "expr": "mysql_global_status_innodb_mem_dictionary{instance=\"$host\"}",
           "format": "time_series",
           "interval": "$interval",
@@ -2142,15 +2133,6 @@
           "intervalFactor": 1,
           "legendFormat": "Adaptive Hash Index Size",
           "refId": "E",
-          "step": 20
-        },
-        {
-          "expr": "mysql_global_variables_tokudb_cache_size{instance=\"$host\"}",
-          "format": "time_series",
-          "interval": "$interval",
-          "intervalFactor": 1,
-          "legendFormat": "TokuDB Cache Size",
-          "refId": "I",
           "step": 20
         }
       ],
