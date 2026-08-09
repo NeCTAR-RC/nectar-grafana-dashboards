@@ -770,10 +770,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "prometheus_tsdb_head_gc_duration_seconds{job=\"prometheus\",quantile=\"0.99\"}",
+          "expr": "rate(prometheus_tsdb_head_gc_duration_seconds_sum{job=\"prometheus\"}[5m]) / rate(prometheus_tsdb_head_gc_duration_seconds_count{job=\"prometheus\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "duration-p99",
+          "legendFormat": "duration-mean",
           "refId": "A",
           "step": 20
         },
@@ -876,7 +876,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "histogram_quantile(0.99, sum(rate(prometheus_tsdb_compaction_duration_bucket{job=\"prometheus\"}[5m])) by (le))",
+          "expr": "histogram_quantile(0.99, sum(rate(prometheus_tsdb_compaction_duration_seconds_bucket{job=\"prometheus\"}[5m])) by (le))",
           "format": "time_series",
           "hide": false,
           "interval": "",
