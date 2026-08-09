@@ -146,18 +146,10 @@
           "type": "bargauge"
         },
         {
-          "aliasColors": {},
-          "breakPoint": "50%",
-          "combine": {
-            "label": "Others",
-            "threshold": 0
-          },
           "datasource": {
             "type": "elasticsearch",
             "uid": "${DS_ELASTICSEARCH}"
           },
-          "fontSize": "80%",
-          "format": "short",
           "gridPos": {
             "h": 8,
             "w": 8,
@@ -165,17 +157,8 @@
             "y": 1
           },
           "id": 11,
-          "legend": {
-            "percentage": true,
-            "show": true,
-            "values": true
-          },
-          "legendType": "Right side",
           "links": [],
           "maxDataPoints": 3,
-          "nullPointMode": "connected",
-          "pieType": "pie",
-          "strokeWidth": 1,
           "targets": [
             {
               "bucketAggs": [
@@ -221,60 +204,66 @@
             }
           ],
           "title": "Response code [ $api ]",
-          "type": "grafana-piechart-panel",
-          "valueName": "current"
+          "type": "piechart",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "unit": "short"
+            },
+            "overrides": []
+          },
+          "options": {
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "pieType": "pie",
+            "displayLabels": [],
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            },
+            "legend": {
+              "showLegend": true,
+              "displayMode": "table",
+              "placement": "right",
+              "values": [
+                "value"
+              ]
+            }
+          }
         },
         {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
           "datasource": {
             "type": "elasticsearch",
             "uid": "${DS_ELASTICSEARCH}"
           },
           "description": "",
-          "fieldConfig": {
-            "defaults": {
-              "links": []
-            },
-            "overrides": []
-          },
-          "fill": 2,
-          "fillGradient": 0,
           "gridPos": {
             "h": 12,
             "w": 13,
             "x": 0,
             "y": 9
           },
-          "hiddenSeries": false,
           "id": 2,
           "interval": "",
-          "legend": {
-            "avg": false,
-            "current": false,
-            "max": false,
-            "min": false,
-            "show": true,
-            "total": false,
-            "values": false
-          },
-          "lines": true,
-          "linewidth": 1,
-          "nullPointMode": "null",
           "options": {
-            "alertThreshold": true
+            "legend": {
+              "showLegend": true,
+              "displayMode": "list",
+              "placement": "bottom",
+              "calcs": []
+            },
+            "tooltip": {
+              "mode": "multi",
+              "sort": "none"
+            }
           },
-          "percentage": false,
-          "pluginVersion": "8.5.9",
-          "pointradius": 2,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
           "targets": [
             {
               "bucketAggs": [
@@ -314,36 +303,47 @@
               "timeField": "@timestamp"
             }
           ],
-          "thresholds": [],
-          "timeRegions": [],
           "title": "Response Msecs p75 [ $api ]",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "mode": "time",
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "$$hashKey": "object:238",
-              "format": "ms",
-              "logBase": 1,
-              "show": true
+          "type": "timeseries",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {
+                "drawStyle": "line",
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "fillOpacity": 20,
+                "gradientMode": "none",
+                "spanNulls": false,
+                "showPoints": "auto",
+                "pointSize": 4,
+                "stacking": {
+                  "mode": "none",
+                  "group": "A"
+                },
+                "axisPlacement": "auto",
+                "axisColorMode": "text",
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "barAlignment": 0,
+                "insertNulls": false,
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "color": {
+                "mode": "palette-classic"
+              },
+              "unit": "ms"
             },
-            {
-              "$$hashKey": "object:239",
-              "format": "short",
-              "logBase": 1,
-              "show": true
-            }
-          ],
-          "yaxis": {
-            "align": false
+            "overrides": []
           }
         },
         {
