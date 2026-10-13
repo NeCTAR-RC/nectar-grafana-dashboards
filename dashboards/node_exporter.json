@@ -245,7 +245,7 @@
                 },
                 "properties": [
                   {
-                    "id": "custom.hidden",
+                    "id": "custom.hideFrom.viz",
                     "value": true
                   }
                 ]
@@ -256,6 +256,10 @@
                   "options": "Value #N"
                 },
                 "properties": [
+                  {
+                    "id": "custom.hideFrom.viz",
+                    "value": false
+                  },
                   {
                     "id": "displayName",
                     "value": "TCP_tw"
@@ -304,6 +308,10 @@
                 },
                 "properties": [
                   {
+                    "id": "custom.hideFrom.viz",
+                    "value": false
+                  },
+                  {
                     "id": "displayName",
                     "value": "TCP_estab"
                   },
@@ -343,6 +351,10 @@
                 },
                 "properties": [
                   {
+                    "id": "custom.hideFrom.viz",
+                    "value": false
+                  },
+                  {
                     "id": "displayName",
                     "value": "Load(5m)"
                   },
@@ -362,6 +374,10 @@
                   "options": "Value #K"
                 },
                 "properties": [
+                  {
+                    "id": "custom.hideFrom.viz",
+                    "value": false
+                  },
                   {
                     "id": "displayName",
                     "value": "Transmit"
@@ -410,6 +426,10 @@
                 },
                 "properties": [
                   {
+                    "id": "custom.hideFrom.viz",
+                    "value": false
+                  },
+                  {
                     "id": "displayName",
                     "value": "Receive"
                   },
@@ -456,6 +476,10 @@
                   "options": "Value #I"
                 },
                 "properties": [
+                  {
+                    "id": "custom.hideFrom.viz",
+                    "value": false
+                  },
                   {
                     "id": "displayName",
                     "value": "Disk write"
@@ -504,6 +528,10 @@
                 },
                 "properties": [
                   {
+                    "id": "custom.hideFrom.viz",
+                    "value": false
+                  },
+                  {
                     "id": "displayName",
                     "value": "Disk read"
                   },
@@ -550,6 +578,10 @@
                   "options": "Value #G"
                 },
                 "properties": [
+                  {
+                    "id": "custom.hideFrom.viz",
+                    "value": false
+                  },
                   {
                     "id": "displayName",
                     "value": "Mem used%"
@@ -598,6 +630,10 @@
                 },
                 "properties": [
                   {
+                    "id": "custom.hideFrom.viz",
+                    "value": false
+                  },
+                  {
                     "id": "displayName",
                     "value": "CPU used%"
                   },
@@ -644,6 +680,10 @@
                   "options": "Value #E"
                 },
                 "properties": [
+                  {
+                    "id": "custom.hideFrom.viz",
+                    "value": false
+                  },
                   {
                     "id": "displayName",
                     "value": "Part used%"
@@ -692,6 +732,10 @@
                 },
                 "properties": [
                   {
+                    "id": "custom.hideFrom.viz",
+                    "value": false
+                  },
+                  {
                     "id": "displayName",
                     "value": " Uptime"
                   },
@@ -712,6 +756,10 @@
                 },
                 "properties": [
                   {
+                    "id": "custom.hideFrom.viz",
+                    "value": false
+                  },
+                  {
                     "id": "displayName",
                     "value": "CPU"
                   },
@@ -727,6 +775,10 @@
                   "options": "Value #B"
                 },
                 "properties": [
+                  {
+                    "id": "custom.hideFrom.viz",
+                    "value": false
+                  },
                   {
                     "id": "displayName",
                     "value": "Mem"
@@ -748,6 +800,10 @@
                 },
                 "properties": [
                   {
+                    "id": "custom.hideFrom.viz",
+                    "value": false
+                  },
+                  {
                     "id": "displayName",
                     "value": "IP(Link to details)"
                   },
@@ -764,7 +820,7 @@
                     "value": [
                       {
                         "title": "Browse host details",
-                        "url": "d/xfpJB9FGz/node-exporter?orgId=1&var-job=${job}&var-hostname=All&var-node=${__value.text}&var-device=All&var-origin_prometheus=$origin_prometheus",
+                        "url": "d/W5KDrdKnz/node-exporter?orgId=1&var-job=${job}&var-hostname=All&var-node=${__value.text}&var-device=All&var-origin_prometheus=$origin_prometheus",
                         "targetBlank": false
                       }
                     ]
@@ -777,6 +833,10 @@
                   "options": "nodename"
                 },
                 "properties": [
+                  {
+                    "id": "custom.hideFrom.viz",
+                    "value": false
+                  },
                   {
                     "id": "displayName",
                     "value": "Hostname"
@@ -1890,7 +1950,7 @@
             },
             "properties": [
               {
-                "id": "custom.hidden",
+                "id": "custom.hideFrom.viz",
                 "value": true
               }
             ]
@@ -1901,6 +1961,10 @@
               "options": "alias"
             },
             "properties": [
+              {
+                "id": "custom.hideFrom.viz",
+                "value": false
+              },
               {
                 "id": "displayName",
                 "value": "Host"
@@ -1914,6 +1978,10 @@
             },
             "properties": [
               {
+                "id": "custom.hideFrom.viz",
+                "value": false
+              },
+              {
                 "id": "displayName",
                 "value": "Device"
               }
@@ -1926,6 +1994,10 @@
             },
             "properties": [
               {
+                "id": "custom.hideFrom.viz",
+                "value": false
+              },
+              {
                 "id": "displayName",
                 "value": "Filesystem"
               }
@@ -1937,6 +2009,10 @@
               "options": "Value #C"
             },
             "properties": [
+              {
+                "id": "custom.hideFrom.viz",
+                "value": false
+              },
               {
                 "id": "displayName",
                 "value": "Size"
@@ -1957,6 +2033,10 @@
               "options": "Value #B"
             },
             "properties": [
+              {
+                "id": "custom.hideFrom.viz",
+                "value": false
+              },
               {
                 "id": "displayName",
                 "value": "Used"
@@ -2005,6 +2085,10 @@
             },
             "properties": [
               {
+                "id": "custom.hideFrom.viz",
+                "value": false
+              },
+              {
                 "id": "displayName",
                 "value": "Avail"
               },
@@ -2050,6 +2134,10 @@
               "options": "mountpoint"
             },
             "properties": [
+              {
+                "id": "custom.hideFrom.viz",
+                "value": false
+              },
               {
                 "id": "displayName",
                 "value": "Mounted on"
