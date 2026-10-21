@@ -172,6 +172,18 @@ configMapGenerator:
     annotations:
       grafana_folder: "Infrastructure"
 
+- name: dashboards-argocd-operational-overview
+  files: [ dashboards/argocd_operational_overview.json ]
+  options:
+    annotations:
+      grafana_folder: "Infrastructure"
+
+- name: dashboards-argocd-application-overview
+  files: [ dashboards/argocd_application_overview.json ]
+  options:
+    annotations:
+      grafana_folder: "Infrastructure"
+
 - name: dashboards-mysql-overview
   files: [ dashboards/mysql_overview.json ]
   options:
