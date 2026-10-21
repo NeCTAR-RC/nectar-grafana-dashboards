@@ -160,6 +160,12 @@ configMapGenerator:
     annotations:
       grafana_folder: "Infrastructure"
 
+- name: dashboards-haproxy
+  files: [ dashboards/haproxy.json ]
+  options:
+    annotations:
+      grafana_folder: "Infrastructure"
+
 - name: dashboards-mysql-overview
   files: [ dashboards/mysql_overview.json ]
   options:
