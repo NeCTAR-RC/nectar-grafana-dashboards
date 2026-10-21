@@ -154,6 +154,12 @@ configMapGenerator:
     annotations:
       grafana_folder: "Infrastructure"
 
+- name: dashboards-harbor
+  files: [ dashboards/harbor.json ]
+  options:
+    annotations:
+      grafana_folder: "Infrastructure"
+
 - name: dashboards-mysql-overview
   files: [ dashboards/mysql_overview.json ]
   options:
