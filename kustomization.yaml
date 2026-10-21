@@ -148,6 +148,12 @@ configMapGenerator:
     annotations:
       grafana_folder: "Infrastructure"
 
+- name: dashboards-anubis
+  files: [ dashboards/anubis.json ]
+  options:
+    annotations:
+      grafana_folder: "Infrastructure"
+
 - name: dashboards-mysql-overview
   files: [ dashboards/mysql_overview.json ]
   options:
