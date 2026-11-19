@@ -1356,17 +1356,17 @@
       }
     },
     {
-      "type": "table",
+      "type": "timeseries",
       "id": 60,
       "title": "Control plane Kubernetes versions",
-      "description": "Number of workload clusters per Kubernetes version, from the KubeadmControlPlane version.",
+      "description": "Number of workload clusters per Kubernetes version over time, from the KubeadmControlPlane version. Stacked, so the total height is the number of control planes and the bands show versions rolling over.",
       "datasource": {
         "type": "prometheus",
         "uid": "${datasource}"
       },
       "gridPos": {
         "h": 8,
-        "w": 8,
+        "w": 12,
         "x": 0,
         "y": 18
       },
@@ -1378,39 +1378,33 @@
           },
           "expr": "sort(count by (version) (capi_kubeadmcontrolplane_info))",
           "refId": "A",
-          "legendFormat": "__auto",
-          "range": false,
-          "instant": true,
-          "editorMode": "code",
-          "format": "table"
-        }
-      ],
-      "transformations": [
-        {
-          "id": "organize",
-          "options": {
-            "excludeByName": {
-              "Time": true
-            },
-            "renameByName": {
-              "version": "Kubernetes version",
-              "Value": "Clusters"
-            },
-            "indexByName": {
-              "version": 0,
-              "Value": 1
-            }
-          }
+          "legendFormat": "{{version}}",
+          "range": true,
+          "instant": false,
+          "editorMode": "code"
         }
       ],
       "fieldConfig": {
         "defaults": {
+          "unit": "short",
+          "decimals": 0,
+          "color": {
+            "mode": "palette-classic"
+          },
           "custom": {
-            "align": "auto",
-            "cellOptions": {
-              "type": "auto"
+            "drawStyle": "line",
+            "lineWidth": 1,
+            "fillOpacity": 60,
+            "showPoints": "never",
+            "spanNulls": false,
+            "axisSoftMin": 0,
+            "stacking": {
+              "mode": "normal",
+              "group": "A"
             },
-            "filterable": true
+            "thresholdsStyle": {
+              "mode": "off"
+            }
           },
           "thresholds": {
             "mode": "absolute",
@@ -1425,17 +1419,21 @@
         "overrides": []
       },
       "options": {
-        "showHeader": true,
-        "cellHeight": "sm",
-        "footer": {
-          "show": false
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "calcs": [
+            "lastNotNull",
+            "max"
+          ],
+          "sortBy": "Last *",
+          "sortDesc": true
         },
-        "sortBy": [
-          {
-            "displayName": "Kubernetes version",
-            "desc": false
-          }
-        ]
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
       }
     },
     {
