@@ -1357,6 +1357,89 @@
     },
     {
       "type": "table",
+      "id": 60,
+      "title": "Control plane Kubernetes versions",
+      "description": "Number of workload clusters per Kubernetes version, from the KubeadmControlPlane version.",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 0,
+        "y": 18
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "expr": "sort(count by (version) (capi_kubeadmcontrolplane_info))",
+          "refId": "A",
+          "legendFormat": "__auto",
+          "range": false,
+          "instant": true,
+          "editorMode": "code",
+          "format": "table"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": true
+            },
+            "renameByName": {
+              "version": "Kubernetes version",
+              "Value": "Clusters"
+            },
+            "indexByName": {
+              "version": 0,
+              "Value": 1
+            }
+          }
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "filterable": true
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "showHeader": true,
+        "cellHeight": "sm",
+        "footer": {
+          "show": false
+        },
+        "sortBy": [
+          {
+            "displayName": "Kubernetes version",
+            "desc": false
+          }
+        ]
+      }
+    },
+    {
+      "type": "table",
       "id": 16,
       "title": "Cluster conditions",
       "description": "Cluster API v1beta2 conditions per cluster. Health conditions (Available, InfrastructureReady and so on) should be True. Activity conditions (RollingOut, ScalingUp, ScalingDown, Remediating, Deleting, Paused) are normally False and show True while that activity is under way. InfrastructureReady comes from the OpenStackCluster (CAPO).",
@@ -1368,7 +1451,7 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 18
+        "y": 26
       },
       "targets": [
         {
@@ -1687,7 +1770,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 26
+        "y": 34
       },
       "targets": [
         {
@@ -1790,7 +1873,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 26
+        "y": 34
       },
       "targets": [
         {
@@ -1873,7 +1956,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 34
+        "y": 42
       },
       "targets": [
         {
@@ -1956,7 +2039,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 34
+        "y": 42
       },
       "targets": [
         {
@@ -2034,7 +2117,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 42
+        "y": 50
       }
     },
     {
@@ -2050,7 +2133,7 @@
         "h": 8,
         "w": 6,
         "x": 0,
-        "y": 43
+        "y": 51
       },
       "targets": [
         {
@@ -2228,7 +2311,7 @@
         "h": 8,
         "w": 9,
         "x": 6,
-        "y": 43
+        "y": 51
       },
       "targets": [
         {
@@ -2429,7 +2512,7 @@
         "h": 8,
         "w": 9,
         "x": 15,
-        "y": 43
+        "y": 51
       },
       "targets": [
         {
@@ -2587,7 +2670,7 @@
         "h": 10,
         "w": 24,
         "x": 0,
-        "y": 51
+        "y": 59
       },
       "targets": [
         {
@@ -2697,7 +2780,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 61
+        "y": 69
       }
     },
     {
@@ -2713,7 +2796,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 62
+        "y": 70
       },
       "targets": [
         {
@@ -2809,7 +2892,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 62
+        "y": 70
       },
       "targets": [
         {
@@ -2905,7 +2988,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 70
+        "y": 78
       },
       "targets": [
         {
@@ -2997,7 +3080,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 70
+        "y": 78
       },
       "targets": [
         {
@@ -3214,7 +3297,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 78
+        "y": 86
       }
     },
     {
@@ -3230,7 +3313,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 79
+        "y": 87
       },
       "targets": [
         {
@@ -3310,7 +3393,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 79
+        "y": 87
       },
       "targets": [
         {
@@ -3391,7 +3474,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 87
+        "y": 95
       },
       "targets": [
         {
@@ -3471,7 +3554,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 87
+        "y": 95
       },
       "targets": [
         {
@@ -3575,7 +3658,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 95
+        "y": 103
       },
       "targets": [
         {
@@ -3767,7 +3850,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 95
+        "y": 103
       },
       "targets": [
         {
@@ -3848,7 +3931,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 103
+        "y": 111
       },
       "targets": [
         {
@@ -3928,7 +4011,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 103
+        "y": 111
       },
       "targets": [
         {
@@ -4005,7 +4088,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 111
+        "y": 119
       }
     },
     {
@@ -4021,7 +4104,7 @@
         "h": 6,
         "w": 12,
         "x": 0,
-        "y": 112
+        "y": 120
       },
       "targets": [
         {
@@ -4104,7 +4187,7 @@
         "h": 6,
         "w": 12,
         "x": 12,
-        "y": 112
+        "y": 120
       },
       "targets": [
         {
@@ -4237,7 +4320,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 118
+        "y": 126
       },
       "targets": [
         {
@@ -4317,7 +4400,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 118
+        "y": 126
       },
       "targets": [
         {
@@ -4398,7 +4481,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 126
+        "y": 134
       },
       "targets": [
         {
@@ -4478,7 +4561,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 126
+        "y": 134
       },
       "targets": [
         {
@@ -4583,7 +4666,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 134
+        "y": 142
       },
       "targets": [
         {
@@ -4664,7 +4747,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 134
+        "y": 142
       },
       "targets": [
         {
@@ -4744,7 +4827,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 142
+        "y": 150
       },
       "targets": [
         {
@@ -4833,7 +4916,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 142
+        "y": 150
       },
       "targets": [
         {
@@ -4921,7 +5004,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 150
+        "y": 158
       },
       "targets": [
         {
@@ -5002,7 +5085,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 150
+        "y": 158
       },
       "targets": [
         {
@@ -5082,7 +5165,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 158
+        "y": 166
       },
       "targets": [
         {
@@ -5162,7 +5245,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 158
+        "y": 166
       },
       "targets": [
         {
@@ -5239,7 +5322,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 166
+        "y": 174
       }
     },
     {
@@ -5255,7 +5338,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 167
+        "y": 175
       },
       "targets": [
         {
@@ -5335,7 +5418,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 167
+        "y": 175
       },
       "targets": [
         {
@@ -5415,7 +5498,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 175
+        "y": 183
       },
       "targets": [
         {
@@ -5496,7 +5579,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 175
+        "y": 183
       },
       "targets": [
         {
