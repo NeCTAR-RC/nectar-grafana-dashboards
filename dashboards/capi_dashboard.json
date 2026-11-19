@@ -1376,7 +1376,7 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
-          "expr": "sort(count by (version) (capi_kubeadmcontrolplane_info))",
+          "expr": "count by (version) (capi_kubeadmcontrolplane_info)",
           "refId": "A",
           "legendFormat": "{{version}}",
           "range": true,
